@@ -1,4 +1,4 @@
-package com.example.propietariosmobilecliente.ui.inicio;
+package com.example.propietariosmobilecliente.ui.contratos;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,28 +13,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.propietariosmobilecliente.R;
-import com.example.propietariosmobilecliente.databinding.FragmentInicioBinding;
 
-public class InicioFragment extends Fragment {
-    private FragmentInicioBinding binding;
-    private InicioViewModel mViewModel;
+public class ContratosFragment extends Fragment {
 
-    public static InicioFragment newInstance() {
-        return new InicioFragment();
+    private ContratosViewModel mViewModel;
+
+    public static ContratosFragment newInstance() {
+        return new ContratosFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        mViewModel = new ViewModelProvider(this).get(InicioViewModel.class);
-        binding = FragmentInicioBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        return inflater.inflate(R.layout.fragment_contratos, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(InicioViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(ContratosViewModel.class);
         // TODO: Use the ViewModel
     }
 

@@ -7,6 +7,7 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
+import com.example.propietariosmobilecliente.MainActivity;
 import com.example.propietariosmobilecliente.ui.home.HomeFragment;
 
 public class LoginActivityViewModel extends AndroidViewModel {
@@ -20,6 +21,9 @@ public class LoginActivityViewModel extends AndroidViewModel {
         //luego verificar que el correo y password devuelvan un usuario
         if(true){
             //navegar al fragment de inicio
+            Intent i = new Intent(context, MainActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i);
         }
     }
 }
