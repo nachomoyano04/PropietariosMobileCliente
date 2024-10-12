@@ -1,7 +1,44 @@
 package com.example.propietariosmobilecliente.ui.inmuebles;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class InmueblesViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
+import com.example.propietariosmobilecliente.R;
+import com.example.propietariosmobilecliente.models.Inmueble;
+
+import java.util.ArrayList;
+
+public class InmueblesViewModel extends AndroidViewModel {
+
+    private MutableLiveData<ArrayList<Inmueble>> mListaInmuebles;
+
+    public InmueblesViewModel(@NonNull Application application) {
+        super(application);
+    }
+
+    public LiveData<ArrayList<Inmueble>> getMListaInmuebles(){
+        if(mListaInmuebles == null){
+            mListaInmuebles = new MutableLiveData<>();
+        }
+        return mListaInmuebles;
+    }
+
+    public void cargarLista(){
+        //logica para cargar lista cuando consumamos la api obteniendo los inmuebles del propietario logueado.
+        // - ArrayList<Inmueble> listaInmuebles = ...
+        // -
+        // -
+        //Logica harcodeando
+        ArrayList<Inmueble> listaInmuebles = new ArrayList<>();
+        listaInmuebles.add(new Inmueble("Mitre 2002", R.drawable.keyicon, "Departamento", 30000.));
+        listaInmuebles.add(new Inmueble("Mitre 2003", R.drawable.keyicon, "Casa", 320000.));
+        listaInmuebles.add(new Inmueble("Mitre 2004", R.drawable.keyicon, "Campo", 5670000.));
+        listaInmuebles.add(new Inmueble("Mitre 2005", R.drawable.keyicon, "Hotel", 7440000.));
+        mListaInmuebles.setValue(listaInmuebles);
+    }
 }

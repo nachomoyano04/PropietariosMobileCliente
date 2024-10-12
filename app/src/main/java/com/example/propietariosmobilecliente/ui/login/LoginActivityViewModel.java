@@ -3,12 +3,12 @@ package com.example.propietariosmobilecliente.ui.login;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
 import com.example.propietariosmobilecliente.MainActivity;
-import com.example.propietariosmobilecliente.ui.home.HomeFragment;
 
 public class LoginActivityViewModel extends AndroidViewModel {
     private Context context;
@@ -24,6 +24,8 @@ public class LoginActivityViewModel extends AndroidViewModel {
             Intent i = new Intent(context, MainActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
+        }else{
+            Toast.makeText(context, "Correo y/o password incorrectos", Toast.LENGTH_SHORT).show();
         }
     }
 }
