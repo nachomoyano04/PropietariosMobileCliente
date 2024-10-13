@@ -1,5 +1,6 @@
 package com.example.propietariosmobilecliente.ui.inmuebles;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.propietariosmobilecliente.R;
 import com.example.propietariosmobilecliente.models.Inmueble;
@@ -38,6 +40,14 @@ public class InmueblesAdapter extends RecyclerView.Adapter<InmueblesAdapter.View
         holder.tvTipo.setText(i.getTipo());
         holder.tvPrecio.setText("$"+i.getPrecio());
         //setear escuchador de click para la tarjeta y que navegue al detalleInmueble con el bundle de inmueble en el intent...
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle b = new Bundle();
+                b.putSerializable("Inmueble", i);
+                Navigation.findNavController(view).navigate(R.id.nav_inmueble_detalles, b);
+            }
+        });
     }
 
     @Override

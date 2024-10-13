@@ -1,11 +1,13 @@
 package com.example.propietariosmobilecliente.ui.contratos;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.propietariosmobilecliente.R;
@@ -38,6 +40,14 @@ public class ContratosAdapter extends RecyclerView.Adapter<ContratosAdapter.View
         holder.tvFechaFin.setText("Fecha fin: "+c.getFechaFin());
         holder.tvImporteContrato.setText("Importe contrato: $"+c.getImporteContrato());
         //implementar listener en card para mostrar detalles del contrato pasandole en el bundle el contrato c...
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle b = new Bundle();
+                b.putSerializable("Contrato", c);
+                Navigation.findNavController(view).navigate(R.id.nav_contrato_detalles, b);
+            }
+        });
     }
 
     @Override

@@ -28,5 +28,40 @@
         android:id="@+id/nav_contratos"
         android:name="com.example.propietariosmobilecliente.ui.contratos.ContratosFragment"
         android:label="Contratos"
-        tools:layout="@layout/fragment_contratos" />
+        tools:layout="@layout/fragment_contratos" >
+        <action
+            android:id="@+id/action_nav_contratos_to_nav_contrato_detalles"
+            app:destination="@id/nav_contrato_detalles" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_pagos"
+        android:name="com.example.propietariosmobilecliente.ui.pagos.PagosFragment"
+        android:label="Pagos"
+        tools:layout="@layout/fragment_pagos" >
+        <action
+            android:id="@+id/action_nav_pagos_to_nav_contrato_detalles"
+            app:destination="@id/nav_contrato_detalles" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_contrato_detalles"
+        android:name="com.example.propietariosmobilecliente.ui.contratos.DetalleContratoFragment"
+        android:label="Contrato"
+        tools:layout="@layout/fragment_detalle_contrato" >
+        <action
+            android:id="@+id/action_nav_contrato_detalles_to_nav_pagos"
+            app:destination="@id/nav_pagos" />
+        <action
+            android:id="@+id/action_nav_contrato_detalles_to_nav_contratos"
+            app:destination="@id/nav_contratos" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_inmueble_detalles"
+        android:name="com.example.propietariosmobilecliente.ui.inmuebles.InmuebleDetalleFragment"
+        android:label="Inmueble"
+        tools:layout="@layout/fragment_inmueble_detalle" />
+    <fragment
+        android:id="@+id/nav_inquilino_detalles"
+        android:name="com.example.propietariosmobilecliente.ui.inquilino.InquilinoFragment"
+        android:label="Inquilino"
+        tools:layout="@layout/fragment_inquilino" />
 </navigation>

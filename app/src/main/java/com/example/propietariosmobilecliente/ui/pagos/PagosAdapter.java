@@ -18,6 +18,11 @@ public class PagosAdapter extends RecyclerView.Adapter<PagosAdapter.ViewHolderPa
     private ArrayList<Pago> pagos = new ArrayList<Pago>();
     private LayoutInflater li;
 
+    public PagosAdapter(ArrayList<Pago> pagos, LayoutInflater li) {
+        this.pagos = pagos;
+        this.li = li;
+    }
+
     @NonNull
     @Override
     public ViewHolderPagos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

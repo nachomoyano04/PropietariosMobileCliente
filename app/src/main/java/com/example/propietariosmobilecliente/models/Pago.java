@@ -8,6 +8,15 @@ public class Pago implements Serializable {
     private LocalDate fechaPago;
     private Double importePago;
 
+    public Pago() {
+    }
+
+    public Pago(int numeroPago, LocalDate fechaPago, Double importePago) {
+        this.numeroPago = numeroPago;
+        this.fechaPago = fechaPago;
+        this.importePago = importePago;
+    }
+
     public int getNumeroPago() {
         return numeroPago;
     }
