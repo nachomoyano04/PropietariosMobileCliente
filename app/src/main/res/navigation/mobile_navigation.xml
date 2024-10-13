@@ -13,7 +13,11 @@
         android:id="@+id/nav_inmuebles"
         android:name="com.example.propietariosmobilecliente.ui.inmuebles.InmueblesFragment"
         android:label="Inmuebles"
-        tools:layout="@layout/fragment_inmuebles" />
+        tools:layout="@layout/fragment_inmuebles" >
+        <action
+            android:id="@+id/action_nav_inmuebles_to_altaModificacionFragment"
+            app:destination="@id/nav_altamodificacion_inmueble" />
+    </fragment>
     <fragment
         android:id="@+id/nav_logout"
         android:name="com.example.propietariosmobilecliente.ui.logout.LogoutFragment"
@@ -64,4 +68,13 @@
         android:name="com.example.propietariosmobilecliente.ui.inquilino.InquilinoFragment"
         android:label="Inquilino"
         tools:layout="@layout/fragment_inquilino" />
+    <fragment
+        android:id="@+id/nav_altamodificacion_inmueble"
+        android:name="com.example.propietariosmobilecliente.ui.inmuebles.AltaModificacionFragment"
+        android:label="Datos del inmueble"
+        tools:layout="@layout/fragment_alta_modificacion" >
+        <action
+            android:id="@+id/action_altaModificacionFragment_to_nav_inmuebles"
+            app:destination="@id/nav_inmuebles" />
+    </fragment>
 </navigation>

@@ -35,6 +35,7 @@ public class InmuebleDetalleFragment extends Fragment {
             public void onChanged(Inmueble i) {
                 binding.switchDisponibleDetInm.setChecked(i.isDisponible());
                 binding.tvDireccionDetInm.setText(i.getDireccion());
+                binding.tvPrecioDetInm.setText("$"+i.getPrecio());
                 binding.tvAmbientesDetInm.setText(i.getAmbientes()+"");
                 binding.tvMetrosDetInm.setText(i.getMetros2());
                 binding.tvUsoDetInm.setText(i.getUso());

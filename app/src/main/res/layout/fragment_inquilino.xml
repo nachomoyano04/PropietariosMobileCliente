@@ -1,13 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.inquilino.InquilinoFragment">
+    tools:context=".ui.inquilino.InquilinoFragment" >
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Detalles del inquilino"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="47dp"
+        android:background="@drawable/borde_personalizado"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Nombre:"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvNombreDetInqui"
+            android:layout_width="145dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="47dp"
+        android:background="@drawable/borde_personalizado"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear1">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Apellido:"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvApellidoDetInqui"
+            android:layout_width="145dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear3"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="47dp"
+        android:background="@drawable/borde_personalizado"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear2">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Dni:"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvDniDetInqui"
+            android:layout_width="145dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear4"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="47dp"
+        android:background="@drawable/borde_personalizado"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear3">
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Dirección:"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvDireccionDetInqui"
+            android:layout_width="145dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear5"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="47dp"
+        android:background="@drawable/borde_personalizado"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear4">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Telefono:"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvTelefonoDetInqui"
+            android:layout_width="145dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear6"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="47dp"
+        android:background="@drawable/borde_personalizado"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear5">
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Correo:"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvCorreoDetInqui"
+            android:layout_width="161dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

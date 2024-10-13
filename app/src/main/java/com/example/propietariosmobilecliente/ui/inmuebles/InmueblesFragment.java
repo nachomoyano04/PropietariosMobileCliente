@@ -43,6 +43,12 @@ public class InmueblesFragment extends Fragment {
                 binding.listaInmuebles.setLayoutManager(grid);
             }
         });
+        binding.btnAgregarInmueble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vm.nuevoInmueble(view);
+            }
+        });
         vm.cargarLista();
         return binding.getRoot();
     }

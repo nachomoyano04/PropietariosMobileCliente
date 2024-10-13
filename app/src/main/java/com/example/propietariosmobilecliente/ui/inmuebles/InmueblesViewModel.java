@@ -1,12 +1,14 @@
 package com.example.propietariosmobilecliente.ui.inmuebles;
 
 import android.app.Application;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.navigation.Navigation;
 
 import com.example.propietariosmobilecliente.R;
 import com.example.propietariosmobilecliente.models.Inmueble;
@@ -40,5 +42,9 @@ public class InmueblesViewModel extends AndroidViewModel {
         listaInmuebles.add(new Inmueble("Mitre 2004", R.drawable.keyicon, "Campo", 5670000., "10", true, 3, "Comercial", "Campo hermoso para las carreras"));
         listaInmuebles.add(new Inmueble("Mitre 2005", R.drawable.keyicon, "Hotel", 7440000., "21", false, 4, "Residencial", "Hotel en Las Vegas Nevada"));
         mListaInmuebles.setValue(listaInmuebles);
+    }
+
+    public void nuevoInmueble(View view) {
+        Navigation.findNavController(view).navigate(R.id.nav_altamodificacion_inmueble);
     }
 }

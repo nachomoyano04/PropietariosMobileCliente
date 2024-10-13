@@ -8,10 +8,27 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaInmuebles"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="444dp"
+        android:layout_height="795dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAgregarInmueble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="664dp"
+        android:clickable="true"
+        android:src="@drawable/circulo_plus"
+        android:tooltipText="Agregar"
+        app:backgroundTint="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.959"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/listaInmuebles"
+        app:maxImageSize="40dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
