@@ -13,10 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.propietariosmobilecliente.R;
+import com.example.propietariosmobilecliente.databinding.FragmentDetalleContratoBinding;
 
 public class DetalleContratoFragment extends Fragment {
-
-    private DetalleContratoViewModel mViewModel;
+    private FragmentDetalleContratoBinding binding;
+    private DetalleContratoViewModel vm;
 
     public static DetalleContratoFragment newInstance() {
         return new DetalleContratoFragment();
@@ -25,13 +26,16 @@ public class DetalleContratoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_detalle_contrato, container, false);
+        binding = FragmentDetalleContratoBinding.inflate(inflater, container, false);
+        vm = new ViewModelProvider(this).get(DetalleContratoViewModel.class);
+
+        return binding.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(DetalleContratoViewModel.class);
+        vm = new ViewModelProvider(this).get(DetalleContratoViewModel.class);
         // TODO: Use the ViewModel
     }
 

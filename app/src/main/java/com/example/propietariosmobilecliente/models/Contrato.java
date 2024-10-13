@@ -12,6 +12,14 @@ public class Contrato implements Serializable {
     private LocalDate fechaFin;
     private Double importeContrato;
 
+    public Contrato(String propietario, String inquilino, LocalDate fechaInicio, LocalDate fechaFin, Double importeContrato) {
+        this.propietario = propietario;
+        this.inquilino = inquilino;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.importeContrato = importeContrato;
+    }
+
     public String getPropietario() {
         return propietario;
     }
