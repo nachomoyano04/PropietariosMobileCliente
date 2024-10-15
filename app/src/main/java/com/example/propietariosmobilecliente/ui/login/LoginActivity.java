@@ -26,7 +26,8 @@ public class LoginActivity extends AppCompatActivity {
         binding.btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vm.verificarDatos(binding.etCorreo.getText().toString(), binding.etPassword.getText().toString());
+//                vm.verificarDatos(binding.etCorreo.getText().toString(), binding.etPassword.getText().toString());
+                vm.login(binding.etCorreo.getText().toString(), binding.etPassword.getText().toString());
                 binding.etCorreo.setText("");
                 binding.etPassword.setText("");
             }
