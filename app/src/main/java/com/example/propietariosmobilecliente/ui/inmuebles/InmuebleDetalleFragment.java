@@ -36,12 +36,12 @@ public class InmuebleDetalleFragment extends Fragment {
                 binding.switchDisponibleDetInm.setChecked(i.isDisponible());
                 binding.tvDireccionDetInm.setText(i.getDireccion());
                 binding.tvPrecioDetInm.setText("$"+i.getPrecio());
-                binding.tvAmbientesDetInm.setText(i.getAmbientes()+"");
+                binding.tvAmbientesDetInm.setText(i.getCantidadAmbientes()+"");
                 binding.tvMetrosDetInm.setText(i.getMetros2());
-                binding.tvUsoDetInm.setText(i.getUso());
+//                binding.tvUsoDetInm.setText(i.getUso());
                 binding.tvTipoDetInm.setText(i.getTipo());
                 binding.tvDescripcionDetInm.setText(i.getDescripcion());
-                binding.ivImagenDetInm.setImageResource(i.getImagen());
+//                binding.ivImagenDetInm.setImageResource(i.getImagen());
             }
         });
         vm.leerDatos(getArguments());

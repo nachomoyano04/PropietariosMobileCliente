@@ -3,6 +3,7 @@ package com.example.propietariosmobilecliente.ui.login;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -36,13 +37,14 @@ public class LoginActivityViewModel extends AndroidViewModel {
     }
 
     public void login(String correo, String password){
-        ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria();
+        ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
         Call<String> llamada = api.login(correo, password);
         llamada.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()){
                     String token = response.body();
+                    ApiCliente.guardarToken(context, token);
                     Intent i = new Intent(context, MainActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(i);

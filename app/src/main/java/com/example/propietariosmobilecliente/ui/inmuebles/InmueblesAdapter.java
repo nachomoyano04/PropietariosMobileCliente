@@ -35,7 +35,7 @@ public class InmueblesAdapter extends RecyclerView.Adapter<InmueblesAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolderInmueble holder, int position) {
         Inmueble i = inmuebles.get(position);
-        holder.ivFotoInmueble.setImageResource(i.getImagen());
+//        holder.ivFotoInmueble.setImageResource(i.getImagen());
         holder.tvDireccion.setText(i.getDireccion());
         holder.tvTipo.setText(i.getTipo());
         holder.tvPrecio.setText("$"+i.getPrecio());

@@ -3,29 +3,69 @@ package com.example.propietariosmobilecliente.models;
 import java.io.Serializable;
 
 public class Inmueble implements Serializable {
+    private int idInmueble;
+    private Propietario propietario;
+    private int idPropietario;
     private String direccion;
-    private int imagen;
+    private int idDireccion;
     private String tipo;
-    private Double precio;
+    private int idTipo;
     private String metros2;
+    private int cantidadAmbientes;
     private boolean disponible;
-    private int ambientes;
-    private String uso;
+    private Double precio;
     private String descripcion;
+    private boolean cochera;
+    private boolean piscina;
+    private boolean mascotas;
+    private boolean estado;
+    private String urlImagen;
 
     public Inmueble() {
     }
 
-    public Inmueble(String direccion, int imagen, String tipo, Double precio, String metros2, boolean disponible, int ambientes, String uso, String descripcion) {
+    public Inmueble(int idInmueble, Propietario propietario, int idPropietario, String direccion, int idDireccion, String tipo, int idTipo, String metros2, int cantidadAmbientes, boolean disponible, Double precio, String descripcion, boolean cochera, boolean piscina, boolean mascotas, boolean estado, String urlImagen) {
+        this.idInmueble = idInmueble;
+        this.propietario = propietario;
+        this.idPropietario = idPropietario;
         this.direccion = direccion;
-        this.imagen = imagen;
+        this.idDireccion = idDireccion;
         this.tipo = tipo;
-        this.precio = precio;
+        this.idTipo = idTipo;
         this.metros2 = metros2;
+        this.cantidadAmbientes = cantidadAmbientes;
         this.disponible = disponible;
-        this.ambientes = ambientes;
-        this.uso = uso;
+        this.precio = precio;
         this.descripcion = descripcion;
+        this.cochera = cochera;
+        this.piscina = piscina;
+        this.mascotas = mascotas;
+        this.estado = estado;
+        this.urlImagen = urlImagen;
+    }
+
+    public int getIdInmueble() {
+        return idInmueble;
+    }
+
+    public void setIdInmueble(int idInmueble) {
+        this.idInmueble = idInmueble;
+    }
+
+    public Propietario getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(Propietario propietario) {
+        this.propietario = propietario;
+    }
+
+    public int getIdPropietario() {
+        return idPropietario;
+    }
+
+    public void setIdPropietario(int idPropietario) {
+        this.idPropietario = idPropietario;
     }
 
     public String getDireccion() {
@@ -36,12 +76,12 @@ public class Inmueble implements Serializable {
         this.direccion = direccion;
     }
 
-    public int getImagen() {
-        return imagen;
+    public int getIdDireccion() {
+        return idDireccion;
     }
 
-    public void setImagen(int imagen) {
-        this.imagen = imagen;
+    public void setIdDireccion(int idDireccion) {
+        this.idDireccion = idDireccion;
     }
 
     public String getTipo() {
@@ -52,12 +92,12 @@ public class Inmueble implements Serializable {
         this.tipo = tipo;
     }
 
-    public Double getPrecio() {
-        return precio;
+    public int getIdTipo() {
+        return idTipo;
     }
 
-    public void setPrecio(Double precio) {
-        this.precio = precio;
+    public void setIdTipo(int idTipo) {
+        this.idTipo = idTipo;
     }
 
     public String getMetros2() {
@@ -68,6 +108,14 @@ public class Inmueble implements Serializable {
         this.metros2 = metros2;
     }
 
+    public int getCantidadAmbientes() {
+        return cantidadAmbientes;
+    }
+
+    public void setCantidadAmbientes(int cantidadAmbientes) {
+        this.cantidadAmbientes = cantidadAmbientes;
+    }
+
     public boolean isDisponible() {
         return disponible;
     }
@@ -76,20 +124,12 @@ public class Inmueble implements Serializable {
         this.disponible = disponible;
     }
 
-    public int getAmbientes() {
-        return ambientes;
+    public Double getPrecio() {
+        return precio;
     }
 
-    public void setAmbientes(int ambientes) {
-        this.ambientes = ambientes;
-    }
-
-    public String getUso() {
-        return uso;
-    }
-
-    public void setUso(String uso) {
-        this.uso = uso;
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
 
     public String getDescripcion() {
@@ -98,5 +138,45 @@ public class Inmueble implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public boolean isCochera() {
+        return cochera;
+    }
+
+    public void setCochera(boolean cochera) {
+        this.cochera = cochera;
+    }
+
+    public boolean isPiscina() {
+        return piscina;
+    }
+
+    public void setPiscina(boolean piscina) {
+        this.piscina = piscina;
+    }
+
+    public boolean isMascotas() {
+        return mascotas;
+    }
+
+    public void setMascotas(boolean mascotas) {
+        this.mascotas = mascotas;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
 }
