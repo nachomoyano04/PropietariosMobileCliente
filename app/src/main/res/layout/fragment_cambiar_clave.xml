@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="180dp"
         android:text="Nueva contraseña"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -24,8 +25,8 @@
         android:layout_height="52dp"
         android:layout_marginTop="79dp"
         android:ems="10"
+        android:hint="contraseña..."
         android:inputType="textPassword"
-        android:text="..."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -40,5 +41,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etCambiarClave"
-        app:layout_constraintVertical_bias="0.279" />
+        app:layout_constraintVertical_bias="0.235" />
+
+    <TextView
+        android:id="@+id/tvMensajeCambiarClave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCambiarClaveGuardar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCambiarClave"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

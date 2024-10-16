@@ -1,5 +1,6 @@
 package com.example.propietariosmobilecliente.ui.perfil;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -13,10 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.propietariosmobilecliente.R;
+import com.example.propietariosmobilecliente.databinding.FragmentCambiarClaveBinding;
+import com.example.propietariosmobilecliente.request.ApiCliente;
 
 public class CambiarClaveFragment extends Fragment {
-
-    private CambiarClaveViewModel mViewModel;
+    private FragmentCambiarClaveBinding binding;
+    private CambiarClaveViewModel vm;
 
     public static CambiarClaveFragment newInstance() {
         return new CambiarClaveFragment();
@@ -25,14 +28,28 @@ public class CambiarClaveFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_cambiar_clave, container, false);
+        binding = FragmentCambiarClaveBinding.inflate(inflater, container, false);
+        vm = new ViewModelProvider(this).get(CambiarClaveViewModel.class);
+        vm.getMMensaje().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.tvMensajeCambiarClave.setText(s);
+                binding.etCambiarClave.setText("");
+            }
+        });
+        binding.btnCambiarClaveGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vm.cambiarPassword(binding.etCambiarClave.getText().toString());
+            }
+        });
+        return binding.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(CambiarClaveViewModel.class);
-        // TODO: Use the ViewModel
+        vm = new ViewModelProvider(this).get(CambiarClaveViewModel.class);
     }
 
 }

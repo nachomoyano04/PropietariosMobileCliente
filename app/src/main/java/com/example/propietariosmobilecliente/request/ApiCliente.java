@@ -10,8 +10,6 @@ import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -20,8 +18,8 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public class ApiCliente {
@@ -37,19 +35,8 @@ public class ApiCliente {
 
     public static InmobiliariaService getApiInmobiliaria(Context context){
         Gson gson = new GsonBuilder().setLenient().create();
-//        OkHttpClient cliente = new OkHttpClient.Builder()
-//                .addInterceptor(chain -> {
-//                    String token = getToken(context);
-//                    Request original = chain.request();
-//                    Request request = original.newBuilder()
-//                            .header("Authorization", "Bearer "+token)
-//                            .method(original.method(), original.body())
-//                            .build();
-//                    return chain.proceed(request);
-//                }).build();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URLBASE)
-//                .client(cliente)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
@@ -81,5 +68,14 @@ public class ApiCliente {
         //get inmuebles del propietario logueado
         @GET("inmuebleapi")
         Call<ArrayList<Inmueble>> inmuebles(@Header("Authorization") String token);
+
+        //cambiar password del propietario logueado
+        @FormUrlEncoded
+        @PUT("propietarioapi/password")
+        Call<String> cambiarPassword(@Header("Authorization")String token, @Field("Password") String password);
+
+        //cambiar la disponibilidad del inmueble que se esta viendo el detalle
+        @PUT("inmuebleapi/disponibilidad/{id}")
+        Call<String> cambiarDisponilidad(@Header("Authorization") String token, @Path("id") int id);
     }
 }

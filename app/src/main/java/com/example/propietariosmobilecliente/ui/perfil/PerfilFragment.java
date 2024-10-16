@@ -10,10 +10,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.propietariosmobilecliente.R;
 import com.example.propietariosmobilecliente.databinding.FragmentPerfilBinding;
 import com.example.propietariosmobilecliente.models.Propietario;
@@ -40,10 +43,11 @@ public class PerfilFragment extends Fragment {
                 binding.tvNombrePerfil.setText(p.getNombre());
                 binding.tvTelefonoPerfil.setText(p.getTelefono());
                 binding.tvCorreoPerfil.setText(p.getCorreo());
-                //logica para buscar el image resource con el name file que viene desde la api...
-                //--
-                //--
-                binding.ivAvatarPerfil.setImageResource(R.drawable.ic_launcher_background);
+                Glide.with(getContext())
+                        .load("http://192.168.1.9:5203/img/avatar/"+p.getAvatar())
+                        .placeholder(R.drawable.ic_launcher_background)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(binding.ivAvatarPerfil);
             }
         });
         vm.cargarDatos();

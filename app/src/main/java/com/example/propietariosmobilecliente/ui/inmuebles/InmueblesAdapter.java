@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.propietariosmobilecliente.R;
 import com.example.propietariosmobilecliente.models.Inmueble;
 
@@ -35,8 +38,12 @@ public class InmueblesAdapter extends RecyclerView.Adapter<InmueblesAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolderInmueble holder, int position) {
         Inmueble i = inmuebles.get(position);
-//        holder.ivFotoInmueble.setImageResource(i.getImagen());
-        holder.tvDireccion.setText(i.getDireccion());
+        Glide.with(holder.itemView)
+                .load(i.getUrlImagen())
+                .placeholder(R.drawable.ic_launcher_background)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.ivFotoInmueble);
+        holder.tvDireccion.setText(i.getDireccion().toString());
         holder.tvTipo.setText(i.getTipo());
         holder.tvPrecio.setText("$"+i.getPrecio());
         //setear escuchador de click para la tarjeta y que navegue al detalleInmueble con el bundle de inmueble en el intent...

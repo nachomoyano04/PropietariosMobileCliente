@@ -6,11 +6,11 @@ public class Inmueble implements Serializable {
     private int idInmueble;
     private Propietario propietario;
     private int idPropietario;
-    private String direccion;
+    private Direccion direccion;
     private int idDireccion;
     private String tipo;
-    private int idTipo;
     private String metros2;
+    private String uso;
     private int cantidadAmbientes;
     private boolean disponible;
     private Double precio;
@@ -24,15 +24,15 @@ public class Inmueble implements Serializable {
     public Inmueble() {
     }
 
-    public Inmueble(int idInmueble, Propietario propietario, int idPropietario, String direccion, int idDireccion, String tipo, int idTipo, String metros2, int cantidadAmbientes, boolean disponible, Double precio, String descripcion, boolean cochera, boolean piscina, boolean mascotas, boolean estado, String urlImagen) {
+    public Inmueble(int idInmueble, Propietario propietario, int idPropietario, Direccion direccion, int idDireccion, String tipo, String metros2, String uso, int cantidadAmbientes, boolean disponible, Double precio, String descripcion, boolean cochera, boolean piscina, boolean mascotas, boolean estado, String urlImagen) {
         this.idInmueble = idInmueble;
         this.propietario = propietario;
         this.idPropietario = idPropietario;
         this.direccion = direccion;
         this.idDireccion = idDireccion;
         this.tipo = tipo;
-        this.idTipo = idTipo;
         this.metros2 = metros2;
+        this.uso = uso;
         this.cantidadAmbientes = cantidadAmbientes;
         this.disponible = disponible;
         this.precio = precio;
@@ -52,6 +52,14 @@ public class Inmueble implements Serializable {
         this.idInmueble = idInmueble;
     }
 
+    public String getUso() {
+        return uso;
+    }
+
+    public void setUso(String uso) {
+        this.uso = uso;
+    }
+
     public Propietario getPropietario() {
         return propietario;
     }
@@ -68,11 +76,11 @@ public class Inmueble implements Serializable {
         this.idPropietario = idPropietario;
     }
 
-    public String getDireccion() {
+    public Direccion getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
+    public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
 
@@ -90,14 +98,6 @@ public class Inmueble implements Serializable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public int getIdTipo() {
-        return idTipo;
-    }
-
-    public void setIdTipo(int idTipo) {
-        this.idTipo = idTipo;
     }
 
     public String getMetros2() {
