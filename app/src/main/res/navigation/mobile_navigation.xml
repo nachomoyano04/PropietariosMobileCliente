@@ -27,7 +27,14 @@
         android:id="@+id/nav_perfil"
         android:name="com.example.propietariosmobilecliente.ui.perfil.PerfilFragment"
         android:label="Perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_nav_perfil_to_nav_cambiar_clave"
+            app:destination="@id/nav_cambiar_clave" />
+        <action
+            android:id="@+id/action_nav_perfil_to_nav_editar_avatar"
+            app:destination="@id/nav_editar_avatar" />
+    </fragment>
     <fragment
         android:id="@+id/nav_contratos"
         android:name="com.example.propietariosmobilecliente.ui.contratos.ContratosFragment"
@@ -76,5 +83,23 @@
         <action
             android:id="@+id/action_altaModificacionFragment_to_nav_inmuebles"
             app:destination="@id/nav_inmuebles" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_cambiar_clave"
+        android:name="com.example.propietariosmobilecliente.ui.perfil.CambiarClaveFragment"
+        android:label="Cambiar clave"
+        tools:layout="@layout/fragment_cambiar_clave" >
+        <action
+            android:id="@+id/action_nav_cambiar_clave_to_nav_perfil"
+            app:destination="@id/nav_perfil" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_editar_avatar"
+        android:name="com.example.propietariosmobilecliente.ui.perfil.EditarAvatarFragment"
+        android:label="Editar avatar"
+        tools:layout="@layout/fragment_editar_avatar" >
+        <action
+            android:id="@+id/action_nav_editar_avatar_to_nav_perfil"
+            app:destination="@id/nav_perfil" />
     </fragment>
 </navigation>

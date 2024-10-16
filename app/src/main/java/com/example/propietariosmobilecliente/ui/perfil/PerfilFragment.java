@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +57,18 @@ public class PerfilFragment extends Fragment {
                 String correo = binding.tvCorreoPerfil.getText().toString();
                 Propietario p = new Propietario(-1, dni, apellido, nombre, telefono, correo, "", null,true);
                 vm.guardarDatos(p);
+            }
+        });
+        binding.btnCambiarClave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.nav_cambiar_clave);
+            }
+        });
+        binding.btnPerfilEditarAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.nav_editar_avatar);
             }
         });
         return binding.getRoot();
