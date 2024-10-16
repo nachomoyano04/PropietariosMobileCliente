@@ -35,7 +35,7 @@ public class PerfilViewModel extends AndroidViewModel {
 
     public void cargarDatos(){
         ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
-        Call<Propietario> getPropietario = api.getPropietario();
+        Call<Propietario> getPropietario = api.getPropietario(ApiCliente.getToken(context));
         getPropietario.enqueue(new Callback<Propietario>() {
             @Override
             public void onResponse(Call<Propietario> call, Response<Propietario> response) {

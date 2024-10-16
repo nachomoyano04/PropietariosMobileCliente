@@ -44,7 +44,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()){
                     String token = response.body();
-                    ApiCliente.guardarToken(context, token);
+                    ApiCliente.guardarToken(context, "Bearer " + token);
                     Intent i = new Intent(context, MainActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(i);

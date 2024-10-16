@@ -3,7 +3,12 @@ package com.example.propietariosmobilecliente;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.propietariosmobilecliente.models.Propietario;
+import com.example.propietariosmobilecliente.request.ApiCliente;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -15,6 +20,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.propietariosmobilecliente.databinding.ActivityMainBinding;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,6 +56,32 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        View v = navigationView.getHeaderView(0);
+        TextView nombre = v.findViewById(R.id.tvNavNombre);
+        TextView correo = v.findViewById(R.id.tvNavCorreo);
+        ImageView avatar = v.findViewById(R.id.tvNavAvatar);
+        ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(MainActivity.this);
+        Call<Propietario> getPropietario = api.getPropietario(ApiCliente.getToken(MainActivity.this));
+        getPropietario.enqueue(new Callback<Propietario>() {
+            @Override
+            public void onResponse(Call<Propietario> call, Response<Propietario> response) {
+                if(response.isSuccessful()){
+                    Propietario p = response.body();
+                    nombre.setText(p.getNombreYApellido());
+                    correo.setText(p.getCorreo());
+                    //avatar.setImageResource(p.getAvatar);
+                }else{
+                    Toast.makeText(MainActivity.this, "Error al traer al propietario", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Propietario> call, Throwable throwable) {
+                Toast.makeText(MainActivity.this, "Error en el servidor", Toast.LENGTH_SHORT).show();
+            }
+        });
+        nombre.setText("Pedro");
+        correo.setText("Carlos@gmail.com");
     }
 
     @Override

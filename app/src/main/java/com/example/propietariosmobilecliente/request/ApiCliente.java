@@ -19,6 +19,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -36,19 +37,19 @@ public class ApiCliente {
 
     public static InmobiliariaService getApiInmobiliaria(Context context){
         Gson gson = new GsonBuilder().setLenient().create();
-        OkHttpClient cliente = new OkHttpClient.Builder()
-                .addInterceptor(chain -> {
-                    String token = getToken(context);
-                    Request original = chain.request();
-                    Request request = original.newBuilder()
-                            .header("Authorization", "Bearer "+token)
-                            .method(original.method(), original.body())
-                            .build();
-                    return chain.proceed(request);
-                }).build();
+//        OkHttpClient cliente = new OkHttpClient.Builder()
+//                .addInterceptor(chain -> {
+//                    String token = getToken(context);
+//                    Request original = chain.request();
+//                    Request request = original.newBuilder()
+//                            .header("Authorization", "Bearer "+token)
+//                            .method(original.method(), original.body())
+//                            .build();
+//                    return chain.proceed(request);
+//                }).build();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URLBASE)
-                .client(cliente)
+//                .client(cliente)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
@@ -75,10 +76,10 @@ public class ApiCliente {
 
         //get datos para perfil
         @GET("propietarioapi")
-        Call<Propietario> getPropietario();
+        Call<Propietario> getPropietario(@Header("Authorization") String token);
 
         //get inmuebles del propietario logueado
-        @GET("inmuebleapi/inmuebles")
-        Call<ArrayList<Inmueble>> inmuebles();
+        @GET("inmuebleapi")
+        Call<ArrayList<Inmueble>> inmuebles(@Header("Authorization") String token);
     }
 }

@@ -43,7 +43,7 @@ public class InmueblesViewModel extends AndroidViewModel {
         //logica para cargar lista cuando consumamos la api obteniendo los inmuebles del propietario logueado.
         String token = ApiCliente.getToken(context);
         ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
-        Call<ArrayList<Inmueble>> getInmuebles = api.inmuebles();
+        Call<ArrayList<Inmueble>> getInmuebles = api.inmuebles(ApiCliente.getToken(context));
         getInmuebles.enqueue(new Callback<ArrayList<Inmueble>>() {
             @Override
             public void onResponse(Call<ArrayList<Inmueble>> call, Response<ArrayList<Inmueble>> response) {

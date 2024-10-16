@@ -2,7 +2,7 @@ package com.example.propietariosmobilecliente.models;
 
 import java.io.Serializable;
 
-public class Propietario implements Serializable {
+public class Propietario {
     private int idPropietario;
     private String dni;
     private String apellido;
@@ -98,5 +98,9 @@ public class Propietario implements Serializable {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+    public String getNombreYApellido(){
+        return nombre+" "+apellido;
     }
 }

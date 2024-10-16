@@ -3,7 +3,7 @@ package com.example.propietariosmobilecliente.models;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Contrato implements Serializable {
+public class Contrato implements Serializable{
 //    private Propietario propietario;
     private String propietario;
     private Inquilino inquilino;
