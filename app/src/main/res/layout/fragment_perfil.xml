@@ -21,11 +21,12 @@
     <LinearLayout
         android:id="@+id/linearPerfil1"
         android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="47dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/borde_personalizado"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17">
 
@@ -38,20 +39,20 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvDniPerfil"
             android:layout_width="145dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="TextView"
+            android:hint="dni..."
             android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearPerfil2"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="47dp"
+        android:layout_width="341dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/borde_personalizado"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,50 +68,54 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvApellidoPerfil"
             android:layout_width="145dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="TextView"
+            android:hint="apellido..."
             android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/linearPerfil3"
         android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="47dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/borde_personalizado"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearPerfil2">
 
         <TextView
             android:id="@+id/textviewnombreperfil"
             android:layout_width="5dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Nombre:"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvNombrePerfil"
             android:layout_width="145dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="TextView"
+            android:hint="nombre..."
             android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/linearPerfil4"
         android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="47dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/borde_personalizado"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearPerfil3">
 
@@ -123,23 +128,24 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvTelefonoPerfil"
             android:layout_width="145dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="TextView"
+            android:hint="teléfono..."
             android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearPerfil5"
         android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="47dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/borde_personalizado"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearPerfil4">
 
@@ -152,12 +158,12 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvCorreoPerfil"
             android:layout_width="145dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="TextView"
+            android:hint="correo..."
             android:textSize="18sp" />
     </LinearLayout>
 

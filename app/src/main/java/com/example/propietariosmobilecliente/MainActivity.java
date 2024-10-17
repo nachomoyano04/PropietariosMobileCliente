@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.propietariosmobilecliente.models.Propietario;
 import com.example.propietariosmobilecliente.request.ApiCliente;
 import com.google.android.material.snackbar.Snackbar;
@@ -56,7 +58,18 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        View v = navigationView.getHeaderView(0);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        View v = binding.navView.getHeaderView(0);
         TextView nombre = v.findViewById(R.id.tvNavNombre);
         TextView correo = v.findViewById(R.id.tvNavCorreo);
         ImageView avatar = v.findViewById(R.id.tvNavAvatar);
@@ -69,7 +82,11 @@ public class MainActivity extends AppCompatActivity {
                     Propietario p = response.body();
                     nombre.setText(p.getNombreYApellido());
                     correo.setText(p.getCorreo());
-                    //avatar.setImageResource(p.getAvatar);
+                    Glide.with(MainActivity.this)
+                            .load("http://192.168.1.9:5203/img/avatar/"+p.getAvatar())
+                            .placeholder(R.drawable.ic_launcher_background)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(avatar);
                 }else{
                     Toast.makeText(MainActivity.this, "Error al traer al propietario", Toast.LENGTH_SHORT).show();
                 }
@@ -80,19 +97,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Error en el servidor", Toast.LENGTH_SHORT).show();
             }
         });
-        nombre.setText("Pedro");
-        correo.setText("Carlos@gmail.com");
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();

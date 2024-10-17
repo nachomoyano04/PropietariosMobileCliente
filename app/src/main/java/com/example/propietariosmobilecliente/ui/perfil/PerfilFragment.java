@@ -25,6 +25,7 @@ public class PerfilFragment extends Fragment {
 
     private FragmentPerfilBinding binding;
     private PerfilViewModel vm;
+    private String avatar;
 
     public static PerfilFragment newInstance() {
         return new PerfilFragment();
@@ -48,6 +49,7 @@ public class PerfilFragment extends Fragment {
                         .placeholder(R.drawable.ic_launcher_background)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(binding.ivAvatarPerfil);
+                avatar = p.getAvatar();
             }
         });
         vm.cargarDatos();
@@ -72,7 +74,9 @@ public class PerfilFragment extends Fragment {
         binding.btnPerfilEditarAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.nav_editar_avatar);
+                Bundle b = new Bundle();
+                b.putSerializable("avatar", avatar);
+                Navigation.findNavController(view).navigate(R.id.nav_editar_avatar, b);
             }
         });
         return binding.getRoot();

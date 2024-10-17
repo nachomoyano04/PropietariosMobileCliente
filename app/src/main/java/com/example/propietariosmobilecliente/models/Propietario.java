@@ -2,7 +2,7 @@ package com.example.propietariosmobilecliente.models;
 
 import java.io.Serializable;
 
-public class Propietario {
+public class Propietario implements Serializable{
     private int idPropietario;
     private String dni;
     private String apellido;

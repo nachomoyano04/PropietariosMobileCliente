@@ -33,6 +33,24 @@ public class InmuebleDetalleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentInmuebleDetalleBinding.inflate(inflater, container, false);
         vm = new ViewModelProvider(this).get(InmuebleDetalleViewModel.class);
+        vm.getMMascotas().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                binding.ivIconMascotasInmDet.setImageResource(integer);
+            }
+        });
+        vm.getMPiscina().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                binding.ivIconPiscinaInmDet.setImageResource(integer);
+            }
+        });
+        vm.getMCochera().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                binding.ivIconCocheraInmDet.setImageResource(integer);
+            }
+        });
         vm.getMInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
             @Override
             public void onChanged(Inmueble i) {
@@ -42,9 +60,9 @@ public class InmuebleDetalleFragment extends Fragment {
                 binding.tvAmbientesDetInm.setText(i.getCantidadAmbientes()+"");
                 binding.tvMetrosDetInm.setText(i.getMetros2());
                 binding.tvUsoDetInm.setText(i.getUso());
-                binding.ivIconCocheraInmDet.setImageResource(R.drawable.not_cochera_icon);
-                binding.ivIconMascotasInmDet.setImageResource(R.drawable.not_mascotas_icon);
-                binding.ivIconPiscinaInmDet.setImageResource(R.drawable.not_piscina_icon);
+                vm.setearImagenCochera(i.isCochera());
+                vm.setearImagenPiscina(i.isPiscina());
+                vm.setearImagenMascotas(i.isMascotas());
                 binding.tvTipoDetInm.setText(i.getTipo());
                 binding.tvDescripcionDetInm.setText(i.getDescripcion());
                 Glide.with(getContext())

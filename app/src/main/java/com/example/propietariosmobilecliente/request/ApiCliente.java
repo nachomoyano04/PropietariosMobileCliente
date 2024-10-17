@@ -2,6 +2,7 @@ package com.example.propietariosmobilecliente.request;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 
 import com.example.propietariosmobilecliente.models.Inmueble;
 import com.example.propietariosmobilecliente.models.Propietario;
@@ -10,16 +11,21 @@ import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public class ApiCliente {
@@ -77,5 +83,15 @@ public class ApiCliente {
         //cambiar la disponibilidad del inmueble que se esta viendo el detalle
         @PUT("inmuebleapi/disponibilidad/{id}")
         Call<String> cambiarDisponilidad(@Header("Authorization") String token, @Path("id") int id);
+
+        //editar propietario
+        @FormUrlEncoded
+        @PUT("propietarioapi")
+        Call<String> editarPropietario(@Header("Authorization") String token, @Field("dni") String dni, @Field("apellido") String apellido, @Field("nombre") String nombre, @Field("telefono") String telefono, @Field("correo") String correo);
+
+        //editar avatar propietario
+        @Multipart
+        @PUT("propietarioapi/avatar")
+        Call<String> editarAvatar(@Header("Authorization") String token, @Part String avatar);
     }
 }
