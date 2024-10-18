@@ -34,7 +34,7 @@ public class ContratosAdapter extends RecyclerView.Adapter<ContratosAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolderContratos holder, int position) {
         Contrato c = contratos.get(position);
-        holder.tvPropietario.setText(c.getPropietario());
+        holder.tvPropietario.setText(c.getPropietario().getNombreYApellido());
         holder.tvInquilino.setText(c.getInquilino().nombreYApellido());
         holder.tvFechaInicio.setText("Fecha inicio: "+c.getFechaInicio());
         holder.tvFechaFin.setText("Fecha fin: "+c.getFechaFin());

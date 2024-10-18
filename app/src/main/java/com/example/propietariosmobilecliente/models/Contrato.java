@@ -4,15 +4,17 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Contrato implements Serializable{
-//    private Propietario propietario;
-    private String propietario;
+    private int idContrato;
+    private Propietario propietario;
     private Inquilino inquilino;
-//    private String inquilino;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private Double importeContrato;
 
-    public Contrato(String propietario, Inquilino inquilino, LocalDate fechaInicio, LocalDate fechaFin, Double importeContrato) {
+    public Contrato(){}
+
+    public Contrato(int idContrato, Propietario propietario, Inquilino inquilino, LocalDate fechaInicio, LocalDate fechaFin, Double importeContrato) {
+        this.idContrato = idContrato;
         this.propietario = propietario;
         this.inquilino = inquilino;
         this.fechaInicio = fechaInicio;
@@ -20,11 +22,19 @@ public class Contrato implements Serializable{
         this.importeContrato = importeContrato;
     }
 
-    public String getPropietario() {
+    public int getIdContrato() {
+        return idContrato;
+    }
+
+    public void setIdContrato(int idContrato) {
+        this.idContrato = idContrato;
+    }
+
+    public Propietario getPropietario() {
         return propietario;
     }
 
-    public void setPropietario(String propietario) {
+    public void setPropietario(Propietario propietario) {
         this.propietario = propietario;
     }
 

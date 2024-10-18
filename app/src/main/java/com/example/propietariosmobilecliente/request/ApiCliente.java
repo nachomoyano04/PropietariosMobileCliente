@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 
+import com.example.propietariosmobilecliente.models.Contrato;
 import com.example.propietariosmobilecliente.models.Inmueble;
 import com.example.propietariosmobilecliente.models.Propietario;
 import com.google.gson.Gson;
@@ -93,5 +94,13 @@ public class ApiCliente {
         @Multipart
         @PUT("propietarioapi/avatar")
         Call<String> editarAvatar(@Header("Authorization") String token, @Part String avatar);
+
+        //obtener los contratos de x inmueble
+        @GET("contratoapi/{id}")
+        Call<String> getContratosPorInmueble(@Header("Authorization") String token, @Path("id") int id);
+
+        //obtener todos los contratos que tengan los inmuebles del propietario logueado
+        @GET("contratoapi")
+        Call<ArrayList<Contrato>> getContratos(@Header("Authorization") String token);
     }
 }
