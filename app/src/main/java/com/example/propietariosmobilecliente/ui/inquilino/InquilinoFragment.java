@@ -37,7 +37,6 @@ public class InquilinoFragment extends Fragment {
                 binding.tvNombreDetInqui.setText(i.getNombre());
                 binding.tvApellidoDetInqui.setText(i.getApellido());
                 binding.tvDniDetInqui.setText(i.getDni());
-                binding.tvDireccionDetInqui.setText(i.getDireccion());
                 binding.tvTelefonoDetInqui.setText(i.getTelefono());
                 binding.tvCorreoDetInqui.setText(i.getCorreo());
             }

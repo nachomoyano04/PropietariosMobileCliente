@@ -3,23 +3,25 @@ package com.example.propietariosmobilecliente.models;
 import java.io.Serializable;
 
 public class Inquilino implements Serializable {
+    private int idInquilino;
     private String dni;
-    private String nombre;
     private String apellido;
-    private String direccion;
+    private String nombre;
     private String telefono;
     private String correo;
+    private boolean estado;
 
     public Inquilino() {
     }
 
-    public Inquilino(String dni, String nombre, String apellido, String direccion, String telefono, String correo) {
+    public Inquilino(int idInquilino, String dni, String apellido, String nombre, String telefono, String correo, boolean estado) {
+        this.idInquilino = idInquilino;
         this.dni = dni;
-        this.nombre = nombre;
         this.apellido = apellido;
-        this.direccion = direccion;
+        this.nombre = nombre;
         this.telefono = telefono;
         this.correo = correo;
+        this.estado = estado;
     }
 
     public String getDni() {
@@ -46,12 +48,20 @@ public class Inquilino implements Serializable {
         this.apellido = apellido;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public int getIdInquilino() {
+        return idInquilino;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setIdInquilino(int idInquilino) {
+        this.idInquilino = idInquilino;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     public String getTelefono() {

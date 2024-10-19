@@ -34,10 +34,10 @@ public class DetalleContratoFragment extends Fragment {
         vm.getMContrato().observe(getViewLifecycleOwner(), new Observer<Contrato>() {
             @Override
             public void onChanged(Contrato c) {
-                binding.tvInquilinoDetallesContrato.setText(c.getInquilino().getNombre());
-                binding.tvFechaInicioDetalleContrato.setText(c.getFechaInicio().toString());
-                binding.tvFechaFinDetalleContrato.setText(c.getFechaFin().toString());
-                binding.tvMontoDetallesContrato.setText("$"+c.getImporteContrato());
+                binding.tvInquilinoDetallesContrato.setText("Inquilino: "+c.getInquilino().nombreYApellido());
+                binding.tvFechaInicioDetalleContrato.setText("Fecha de inicio: "+c.getFechaInicio().toLocalDate());
+                binding.tvFechaFinDetalleContrato.setText("Fecha de fin: "+c.getFechaFin().toLocalDate());
+                binding.tvMontoDetallesContrato.setText("Monto: $"+c.getMonto());
             }
         });
         vm.recibirContrato(getArguments());

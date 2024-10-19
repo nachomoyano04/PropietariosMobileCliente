@@ -3,6 +3,7 @@ package com.example.propietariosmobilecliente.ui.contratos;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,6 +46,7 @@ public class ContratosViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<ArrayList<Contrato>> call, Response<ArrayList<Contrato>> response) {
                 if(response.isSuccessful()){
+                    if(response.body() != null)
                     mListaContratos.setValue(response.body());
                 }else{
                     Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
@@ -53,7 +55,8 @@ public class ContratosViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<ArrayList<Contrato>> call, Throwable throwable) {
-                Toast.makeText(context, "Error en el servidor", Toast.LENGTH_SHORT).show();
+                Log.d("ErrorContratos", "Error: " + throwable.getMessage());
+                Toast.makeText(context, "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

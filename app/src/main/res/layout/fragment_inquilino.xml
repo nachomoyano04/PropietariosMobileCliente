@@ -22,11 +22,12 @@
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="47dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/borde_personalizado"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6">
 
@@ -51,11 +52,12 @@
     <LinearLayout
         android:id="@+id/linear2"
         android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="47dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/borde_personalizado"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear1">
 
@@ -80,11 +82,12 @@
     <LinearLayout
         android:id="@+id/linear3"
         android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="47dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/borde_personalizado"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear2">
 
@@ -107,44 +110,16 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linear4"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="47dp"
-        android:background="@drawable/borde_personalizado"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear3">
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="5dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Dirección:"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/tvDireccionDetInqui"
-            android:layout_width="145dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="TextView"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/linear5"
         android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="47dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/borde_personalizado"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear4">
+        app:layout_constraintTop_toBottomOf="@+id/linear3">
 
         <TextView
             android:id="@+id/textView13"
@@ -167,8 +142,8 @@
     <LinearLayout
         android:id="@+id/linear6"
         android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="47dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/borde_personalizado"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
