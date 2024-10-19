@@ -34,8 +34,9 @@ public class PagosAdapter extends RecyclerView.Adapter<PagosAdapter.ViewHolderPa
     public void onBindViewHolder(@NonNull ViewHolderPagos holder, int position) {
         Pago p = pagos.get(position);
         holder.tvNumeroPago.setText("Numero de pago: "+p.getNumeroPago());
-        holder.tvFechaPago.setText("Fecha de pago: "+p.getFechaPago());
+        holder.tvFechaPago.setText("Fecha de pago: "+p.getFechaPago().toLocalDate());
         holder.tvImportePago.setText("Importe: $"+p.getImportePago());
+        holder.tvDetallePagoCard.setText("Detalle: "+p.getDetalle());
     }
 
     @Override
@@ -45,13 +46,14 @@ public class PagosAdapter extends RecyclerView.Adapter<PagosAdapter.ViewHolderPa
 
     public class ViewHolderPagos extends RecyclerView.ViewHolder{
 
-        private TextView tvNumeroPago, tvFechaPago, tvImportePago;
+        private TextView tvNumeroPago, tvFechaPago, tvImportePago, tvDetallePagoCard;
 
         public ViewHolderPagos(@NonNull View itemView) {
             super(itemView);
             tvNumeroPago = itemView.findViewById(R.id.tvNumeroPago);
             tvFechaPago = itemView.findViewById(R.id.tvFechaPago);
             tvImportePago = itemView.findViewById(R.id.tvImportePago);
+            tvDetallePagoCard = itemView.findViewById(R.id.tvDetallePagoCard);
         }
     }
 }

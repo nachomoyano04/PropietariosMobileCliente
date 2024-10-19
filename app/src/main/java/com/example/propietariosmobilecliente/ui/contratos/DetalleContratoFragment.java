@@ -34,9 +34,10 @@ public class DetalleContratoFragment extends Fragment {
         vm.getMContrato().observe(getViewLifecycleOwner(), new Observer<Contrato>() {
             @Override
             public void onChanged(Contrato c) {
-                binding.tvInquilinoDetallesContrato.setText("Inquilino: "+c.getInquilino().nombreYApellido());
-                binding.tvFechaInicioDetalleContrato.setText("Fecha de inicio: "+c.getFechaInicio().toLocalDate());
-                binding.tvFechaFinDetalleContrato.setText("Fecha de fin: "+c.getFechaFin().toLocalDate());
+                binding.tvInquilinoDetallesContrato.setText(c.getInquilino().nombreYApellido());
+                binding.tvInmuebleDetContrato.setText(c.getInmueble().getDescripcion());
+                binding.tvFechaInicioDetalleContrato.setText("Desde: "+c.getFechaInicio().toLocalDate());
+                binding.tvFechaFinDetalleContrato.setText("Hasta: "+c.getFechaFin().toLocalDate());
                 binding.tvMontoDetallesContrato.setText("Monto: $"+c.getMonto());
             }
         });
@@ -51,6 +52,12 @@ public class DetalleContratoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 vm.detalleInquilino(view);
+            }
+        });
+        binding.btnDetalleInmuebleContrato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vm.detalleInmueble(view);
             }
         });
         return binding.getRoot();

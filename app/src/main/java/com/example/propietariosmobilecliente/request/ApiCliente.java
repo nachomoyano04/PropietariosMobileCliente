@@ -6,6 +6,7 @@ import android.net.Uri;
 
 import com.example.propietariosmobilecliente.models.Contrato;
 import com.example.propietariosmobilecliente.models.Inmueble;
+import com.example.propietariosmobilecliente.models.Pago;
 import com.example.propietariosmobilecliente.models.Propietario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -96,11 +97,16 @@ public class ApiCliente {
         Call<String> editarAvatar(@Header("Authorization") String token, @Part String avatar);
 
         //obtener los contratos de x inmueble
-        @GET("contratoapi/{id}")
+        @GET("contratoapi/{id}")  //creo que es innecesario porque directamente seleccionan de una lista todos los contratos
         Call<String> getContratosPorInmueble(@Header("Authorization") String token, @Path("id") int id);
 
         //obtener todos los contratos que tengan los inmuebles del propietario logueado
         @GET("contratoapi")
         Call<ArrayList<Contrato>> getContratos(@Header("Authorization") String token);
+
+        //obtener todos los pagos de x contrato
+        @GET("contratoapi/pagos/{id}")
+        Call<ArrayList<Pago>> getPagosPorContrato(@Header("Authorization") String token, @Path("id") int id);
+
     }
 }

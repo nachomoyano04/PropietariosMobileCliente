@@ -1,22 +1,33 @@
 package com.example.propietariosmobilecliente.ui.pagos;
 
 import android.app.Application;
+import android.content.Context;
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.propietariosmobilecliente.models.Pago;
+import com.example.propietariosmobilecliente.request.ApiCliente;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class PagosViewModel extends AndroidViewModel {
 
+    private Context context;
     private MutableLiveData<ArrayList<Pago>> mListaPagos;
 
     public PagosViewModel(@NonNull Application application) {
         super(application);
+        context = application.getApplicationContext();
     }
 
     public LiveData<ArrayList<Pago>> getMListaPagos(){
@@ -26,15 +37,24 @@ public class PagosViewModel extends AndroidViewModel {
         return mListaPagos;
     }
 
-    public void cargarListaPagos(){
-        //aca consumiriamos la api para ver los pagos del contrato x del inmueble x del propietario logueado
-        //---
-        ArrayList<Pago> pagos = new ArrayList<>();
-        pagos.add(new Pago(1, LocalDate.now(), 2000.));
-        pagos.add(new Pago(2, LocalDate.now().plusDays(1), 3000.));
-        pagos.add(new Pago(3, LocalDate.now().plusDays(1), 4000.));
-        pagos.add(new Pago(4, LocalDate.now().plusDays(1), 5000.));
-        mListaPagos.setValue(pagos);
+    public void cargarListaPagos(Bundle b){
+        int idContrato = (int) b.getSerializable("IdContrato");
+        ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
+        api.getPagosPorContrato(ApiCliente.getToken(context), idContrato).enqueue(new Callback<ArrayList<Pago>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Pago>> call, Response<ArrayList<Pago>> response) {
+                if(response.isSuccessful()){
+                    mListaPagos.setValue(response.body());
+                }else{
+                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Pago>> call, Throwable throwable) {
+                Toast.makeText(context, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

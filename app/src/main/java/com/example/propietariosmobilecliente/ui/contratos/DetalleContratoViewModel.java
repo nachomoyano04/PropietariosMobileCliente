@@ -37,12 +37,20 @@ public class DetalleContratoViewModel extends AndroidViewModel {
     }
 
     public void verPagos(View view){
-        Navigation.findNavController(view).navigate(R.id.nav_pagos);
+        Bundle p = new Bundle();
+        p.putSerializable("IdContrato", mContrato.getValue().getIdContrato());
+        Navigation.findNavController(view).navigate(R.id.nav_pagos, p);
     }
 
     public void detalleInquilino(View view){
         Bundle b = new Bundle();
         b.putSerializable("Inquilino", mContrato.getValue().getInquilino());
         Navigation.findNavController(view).navigate(R.id.nav_inquilino_detalles, b);
+    }
+
+    public void detalleInmueble(View view){
+        Bundle i = new Bundle();
+        i.putSerializable("Inmueble", mContrato.getValue().getInmueble());
+        Navigation.findNavController(view).navigate(R.id.nav_inmueble_detalles, i);
     }
 }

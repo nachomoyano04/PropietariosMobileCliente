@@ -1,20 +1,66 @@
 package com.example.propietariosmobilecliente.models;
 
+import com.google.gson.annotations.JsonAdapter;
+
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Pago implements Serializable {
+    private int idPago;
+    private int idContrato;
+    private Contrato contrato;
+    @JsonAdapter(Contrato.LocalDateTimeAdapter.class)
+    private LocalDateTime fechaPago;
     private int numeroPago;
-    private LocalDate fechaPago;
-    private Double importePago;
+    private double importe;
+    private String detalle;
+    private boolean estado;
 
     public Pago() {
     }
 
-    public Pago(int numeroPago, LocalDate fechaPago, Double importePago) {
-        this.numeroPago = numeroPago;
+    public Pago(int idPago, int idContrato, Contrato contrato, LocalDateTime fechaPago, int numeroPago, double importe, String detalle, boolean estado) {
+        this.idPago = idPago;
+        this.idContrato = idContrato;
+        this.contrato = contrato;
         this.fechaPago = fechaPago;
-        this.importePago = importePago;
+        this.numeroPago = numeroPago;
+        this.importe = importe;
+        this.detalle = detalle;
+        this.estado = estado;
+    }
+
+    public int getIdPago() {
+        return idPago;
+    }
+
+    public void setIdPago(int idPago) {
+        this.idPago = idPago;
+    }
+
+    public int getIdContrato() {
+        return idContrato;
+    }
+
+    public void setIdContrato(int idContrato) {
+        this.idContrato = idContrato;
+    }
+
+    public Contrato getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(Contrato contrato) {
+        this.contrato = contrato;
+    }
+
+    public LocalDateTime getFechaPago() {
+        return fechaPago;
+    }
+
+    public void setFechaPago(LocalDateTime fechaPago) {
+        this.fechaPago = fechaPago;
     }
 
     public int getNumeroPago() {
@@ -25,19 +71,27 @@ public class Pago implements Serializable {
         this.numeroPago = numeroPago;
     }
 
-    public LocalDate getFechaPago() {
-        return fechaPago;
+    public double getImportePago() {
+        return importe;
     }
 
-    public void setFechaPago(LocalDate fechaPago) {
-        this.fechaPago = fechaPago;
+    public void setImportePago(double importe) {
+        this.importe = importe;
     }
 
-    public Double getImportePago() {
-        return importePago;
+    public String getDetalle() {
+        return detalle;
     }
 
-    public void setImportePago(Double importePago) {
-        this.importePago = importePago;
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 }

@@ -42,7 +42,7 @@ public class PagosFragment extends Fragment {
                 binding.listaPagos.setAdapter(adapter);
             }
         });
-        vm.cargarListaPagos();
+        vm.cargarListaPagos(getArguments());
         return binding.getRoot();
     }
 
