@@ -13,7 +13,7 @@ public class Inmueble implements Serializable {
     private String uso;
     private int cantidadAmbientes;
     private boolean disponible;
-    private Double precio;
+    private double precio;
     private String descripcion;
     private boolean cochera;
     private boolean piscina;

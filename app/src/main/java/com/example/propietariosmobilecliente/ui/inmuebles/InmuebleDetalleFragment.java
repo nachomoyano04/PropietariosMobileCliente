@@ -78,6 +78,12 @@ public class InmuebleDetalleFragment extends Fragment {
                 vm.cambiarDisponibilidadInmueble();
             }
         });
+        binding.btnEditarInmuebleDetInm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vm.irAEditarInmueble(view);
+            }
+        });
         vm.leerDatos(getArguments());
         return binding.getRoot();
     }

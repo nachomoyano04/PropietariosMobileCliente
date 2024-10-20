@@ -35,19 +35,18 @@
         android:id="@+id/ivImagenDetInm"
         android:layout_width="392dp"
         android:layout_height="183dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout8"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditarInmuebleDetInm"
         tools:src="@tools:sample/avatars" />
 
     <LinearLayout
         android:id="@+id/linearLayout8"
         android:layout_width="257dp"
-        android:layout_height="72dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,9 +79,9 @@
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
         android:text="Características"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -263,4 +262,15 @@
             android:layout_height="33dp"
             android:text="TextView" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnEditarInmuebleDetInm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/primary"
+        android:text="Editar inmueble"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

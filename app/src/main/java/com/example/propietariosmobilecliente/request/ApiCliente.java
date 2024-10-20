@@ -96,10 +96,6 @@ public class ApiCliente {
         @PUT("propietarioapi/avatar")
         Call<String> editarAvatar(@Header("Authorization") String token, @Part String avatar);
 
-        //obtener los contratos de x inmueble
-        @GET("contratoapi/{id}")  //creo que es innecesario porque directamente seleccionan de una lista todos los contratos
-        Call<String> getContratosPorInmueble(@Header("Authorization") String token, @Path("id") int id);
-
         //obtener todos los contratos que tengan los inmuebles del propietario logueado
         @GET("contratoapi")
         Call<ArrayList<Contrato>> getContratos(@Header("Authorization") String token);
@@ -108,5 +104,8 @@ public class ApiCliente {
         @GET("contratoapi/pagos/{id}")
         Call<ArrayList<Pago>> getPagosPorContrato(@Header("Authorization") String token, @Path("id") int id);
 
+        //crear inmueble
+        @POST("inmuebleapi")
+        Call<String> crearInmueble(@Header("Authorization") String token, @Field("tipo")String tipo, @Field("metros2")String metros2, @Field("uso")String uso,@Field("cantidadAmbientes")int cantidadAmbientes,@Field("precio")double precio,@Field("descripcion")String descripcion, @Field("cochera")boolean cochera,@Field("piscina")boolean piscina,@Field("mascotas")boolean mascotas, @Field("urlImagen")String urlImagen, @Field("calle")String calle, @Field("altura")String altura, @Field("ciudad")String ciudad);
     }
 }

@@ -36,8 +36,8 @@ public class ContratosAdapter extends RecyclerView.Adapter<ContratosAdapter.View
         Contrato c = contratos.get(position);
         holder.tvInmueble.setText(c.getInmueble().getDescripcion());
         holder.tvInquilino.setText(c.getInquilino().nombreYApellido());
-        holder.tvFechaInicio.setText("Fecha inicio: " + c.getFechaInicio().toLocalDate());
-        holder.tvFechaFin.setText("Fecha fin: " + c.getFechaFin().toLocalDate());
+        holder.tvFechaInicio.setText("Desde: " + c.getFechaInicio().toLocalDate());
+        holder.tvFechaFin.setText("Hasta: " + c.getFechaFin().toLocalDate());
         holder.tvImporteContrato.setText("Importe: $"+c.getMonto());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

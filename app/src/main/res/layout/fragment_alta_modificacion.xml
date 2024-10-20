@@ -7,37 +7,70 @@
     tools:context=".ui.inmuebles.AltaModificacionFragment" >
 
     <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="413dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/ic_launcher_background"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Calle"
+            android:textAlignment="textStart"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etCalleAMInmueble"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:hint="..."
+            android:inputType="text"
+            android:textAlignment="textStart" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="413dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/borde_personalizado"
+        android:layout_marginTop="5dp"
+        android:background="@color/ic_launcher_background"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
-            android:layout_width="50dp"
+            android:layout_width="250dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Tipo"
+            android:text="Altura"
+            android:textAlignment="textStart"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/etTipoAMInmueble"
-            android:layout_width="wrap_content"
+            android:id="@+id/etAlturaAMInmueble"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_weight="1"
             android:ems="10"
             android:hint="..."
-            android:inputType="text" />
+            android:inputType="text"
+            android:textAlignment="textStart" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="413dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/borde_personalizado"
+        android:layout_marginTop="5dp"
+        android:background="@color/ic_launcher_background"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,136 +78,61 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <TextView
-            android:layout_width="50dp"
+            android:layout_width="250dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Uso"
+            android:text="Ciudad"
+            android:textAlignment="textStart"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/etUsoAMInmueble"
-            android:layout_width="wrap_content"
+            android:id="@+id/etCiudadAMInmueble"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_weight="1"
             android:ems="10"
             android:hint="..."
-            android:inputType="text" />
+            android:inputType="text"
+            android:textAlignment="textStart" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="413dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/borde_personalizado"
+        android:layout_marginTop="5dp"
+        android:background="@color/ic_launcher_background"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <TextView
-            android:layout_width="50dp"
+            android:layout_width="250dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Precio"
+            android:text="Tipo"
+            android:textAlignment="textStart"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/etPrecioAMInmueble"
-            android:layout_width="wrap_content"
+            android:id="@+id/etTipoAMInmueble"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_weight="1"
             android:ems="10"
             android:hint="..."
-            android:inputType="text" />
+            android:inputType="text"
+            android:textAlignment="textStart" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="413dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/borde_personalizado"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Dirección"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/etDireccionAMInmueble"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="..."
-            android:inputType="text" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="413dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/borde_personalizado"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
-
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Ambientes"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/etAmbientesAMInmueble"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="..."
-            android:inputType="text" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout7"
-        android:layout_width="413dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/borde_personalizado"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
-
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Descripción"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/etDescripcionAMInmueble"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="..."
-            android:inputType="text" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="413dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/borde_personalizado"
+        android:layout_marginTop="5dp"
+        android:background="@color/ic_launcher_background"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -182,7 +140,37 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
         <TextView
-            android:layout_width="50dp"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Uso"
+            android:textAlignment="textStart"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etUsoAMInmueble"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="..."
+            android:inputType="text"
+            android:textAlignment="textStart" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="413dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/ic_launcher_background"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+        <TextView
+            android:layout_width="250dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Metros2"
@@ -190,37 +178,182 @@
 
         <EditText
             android:id="@+id/etMetros2AMInmueble"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_weight="1"
             android:ems="10"
             android:hint="..."
-            android:inputType="text" />
+            android:inputType="text"
+            android:textAlignment="textStart" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="413dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/ic_launcher_background"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Descripción"
+            android:textAlignment="textStart"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etDescripcionAMInmueble"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="..."
+            android:inputType="text"
+            android:textAlignment="textStart" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="413dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/ic_launcher_background"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Ambientes"
+            android:textAlignment="textStart"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etAmbientesAMInmueble"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="..."
+            android:inputType="text"
+            android:textAlignment="textStart" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="413dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/ic_launcher_background"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Precio"
+            android:textAlignment="textStart"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etPrecioAMInmueble"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="..."
+            android:inputType="text"
+            android:textAlignment="textStart" />
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="266dp"
-        android:layout_height="259dp"
+        android:id="@+id/ivAvatarAMInmueble"
+        android:layout_width="263dp"
+        android:layout_height="174dp"
+        android:layout_marginTop="22dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
         tools:src="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="116dp"
         android:layout_height="57dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="109dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/primary"
         android:text="Subir imagen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/ivAvatarAMInmueble"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <LinearLayout
+        android:id="@id/linearLayout10"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+        <Switch
+            android:id="@+id/switchMascotasAMInmueble"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Mascotas"
+            android:textAlignment="center" />
+
+        <Switch
+            android:id="@+id/switchCocheraAMInmueble"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Cochera"
+            android:textAlignment="center" />
+
+        <Switch
+            android:id="@+id/switchPiscinaAMInmueble"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Piscina"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="19dp"
+        android:backgroundTint="@color/success"
+        android:text="Guardar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivAvatarAMInmueble"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

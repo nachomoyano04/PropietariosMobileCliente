@@ -2,6 +2,7 @@ package com.example.propietariosmobilecliente.ui.inmuebles;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -10,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 import androidx.navigation.Navigation;
 
 import com.example.propietariosmobilecliente.R;
@@ -71,6 +71,8 @@ public class InmueblesViewModel extends AndroidViewModel {
     }
 
     public void nuevoInmueble(View view) {
-        Navigation.findNavController(view).navigate(R.id.nav_altamodificacion_inmueble);
+        Bundle b = new Bundle();
+        b.putSerializable("Editar", false); // no es necesario pero sirve para entender la lógica.
+        Navigation.findNavController(view).navigate(R.id.nav_altamodificacion_inmueble, b);
     }
 }

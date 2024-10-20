@@ -7,17 +7,15 @@ public class Direccion implements Serializable {
     private String calle;
     private String altura;
     private String ciudad;
-    private String coordenadas;
 
     public Direccion() {
     }
 
-    public Direccion(int idDireccion, String calle, String altura, String ciudad, String coordenadas) {
+    public Direccion(int idDireccion, String calle, String altura, String ciudad) {
         this.idDireccion = idDireccion;
         this.calle = calle;
         this.altura = altura;
         this.ciudad = ciudad;
-        this.coordenadas = coordenadas;
     }
 
     public int getIdDireccion() {
@@ -50,14 +48,6 @@ public class Direccion implements Serializable {
 
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
-    }
-
-    public String getCoordenadas() {
-        return coordenadas;
-    }
-
-    public void setCoordenadas(String coordenadas) {
-        this.coordenadas = coordenadas;
     }
 
     @Override

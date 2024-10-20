@@ -3,6 +3,7 @@ package com.example.propietariosmobilecliente.ui.inmuebles;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.navigation.Navigation;
 
 import com.example.propietariosmobilecliente.R;
 import com.example.propietariosmobilecliente.models.Inmueble;
@@ -107,5 +109,12 @@ public class InmuebleDetalleViewModel extends AndroidViewModel {
         }else{
             mMascotas.setValue(R.drawable.not_mascotas_icon);
         }
+    }
+
+    public void irAEditarInmueble(View view) {
+        Bundle b = new Bundle();
+        b.putSerializable("Editar", true);
+        b.putSerializable("Inmueble", mInmueble.getValue());
+        Navigation.findNavController(view).navigate(R.id.nav_altamodificacion_inmueble, b);
     }
 }
