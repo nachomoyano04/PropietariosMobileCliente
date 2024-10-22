@@ -5,8 +5,12 @@ import static android.app.Activity.RESULT_OK;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -18,6 +22,11 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.propietariosmobilecliente.request.ApiCliente;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -27,8 +36,9 @@ import retrofit2.Response;
 
 public class EditarAvatarViewModel extends AndroidViewModel {
 
-    public MutableLiveData<String> mAvatar;
-    public Context context;
+    private MutableLiveData<String> mAvatar;
+    private Context context;
+
 
     public EditarAvatarViewModel(@NonNull Application application) {
         super(application);
@@ -47,31 +57,65 @@ public class EditarAvatarViewModel extends AndroidViewModel {
         if(result.getResultCode() == RESULT_OK){
             Intent data =result.getData();
             Uri uri = data.getData();
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                context.getContentResolver().takePersistableUriPermission (uri, Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            }
             mAvatar.setValue(uri.toString());
         }
     }
 
     public void setearAvatar(Bundle b) {
         String avatar = (String) b.getSerializable("avatar");
-        mAvatar.setValue(avatar);
+        mAvatar.setValue("http://192.168.1.9:5203/img/avatar/"+avatar);
     }
 
-    public void guardarAvatar(){
-        ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
-        api.editarAvatar(ApiCliente.getToken(context), mAvatar.getValue()).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if(response.isSuccessful()){
-                    Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(context, "Error en la respuesta", Toast.LENGTH_SHORT).show();
+    public void guardarAvatar() {
+        Uri avatarUri = Uri.parse(mAvatar.getValue());
+        Log.d("Avatar URI", mAvatar.getValue());
+        Toast.makeText(context, "Avatar uri: " + avatarUri, Toast.LENGTH_SHORT).show();
+        try {
+            InputStream inputStream = context.getContentResolver().openInputStream(avatarUri);
+            File file = new File(context.getCacheDir(), "avatar.jpg");
+            FileOutputStream outputStream = new FileOutputStream(file);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = inputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, length);
+            }
+            outputStream.close();
+            inputStream.close();
+
+            Log.d("Avatar File", file.getAbsolutePath() + " exists: " + file.exists() + " size: " + file.length());
+
+            RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
+            MultipartBody.Part avatar = MultipartBody.Part.createFormData("avatar", file.getName(), requestFile); // Asegúrate de que el nombre "avatar" coincida con el del servidor
+
+            ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
+            api.editarAvatar(ApiCliente.getToken(context), avatar).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Leer el cuerpo de error
+                        try {
+                            String errorBody = response.errorBody().string();
+                            Toast.makeText(context, "Error: " + errorBody, Toast.LENGTH_SHORT).show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable throwable) {
-                Toast.makeText(context, "Error en el servidor", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<String> call, Throwable throwable) {
+                    Log.d("ErrorAvatar", throwable.getMessage());
+                    Toast.makeText(context, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (Exception ex) {
+            Toast.makeText(context, "Exception: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
+
 }

@@ -31,4 +31,5 @@ public class AltaModificacionViewModel extends AndroidViewModel {
             mInmueble.setValue((Inmueble) b.getSerializable("Inmueble"));
         }
     }
+
 }

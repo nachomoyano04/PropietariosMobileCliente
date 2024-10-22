@@ -32,5 +32,11 @@ public class LoginActivity extends AppCompatActivity {
                 binding.etPassword.setText("");
             }
         });
+        binding.tvRecuperarPasswordLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vm.recuperarPassword();
+            }
+        });
     }
 }

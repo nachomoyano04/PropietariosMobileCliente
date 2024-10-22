@@ -19,6 +19,7 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -44,15 +45,15 @@ public class EditarAvatarFragment extends Fragment {
         vm.getMAvatar().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String avatar) {
+                Toast.makeText(getContext(), avatar, Toast.LENGTH_SHORT).show();
                 Glide.with(getContext())
-                        .load("http://192.168.1.9:5203/img/avatar/"+avatar)
+                        .load(avatar.startsWith("http")?avatar:Uri.parse(avatar))
                         .placeholder(R.drawable.ic_launcher_background)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(binding.ivAvatarEditarAvatar);
             }
         });
-        Bundle b = getArguments();
-        vm.setearAvatar(b);
+        vm.setearAvatar(getArguments());
         binding.btnEditarAvatarElegirOtro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -50,7 +50,7 @@ public class InmueblesViewModel extends AndroidViewModel {
                 if(response.isSuccessful()){
                     ArrayList<Inmueble> listaInmuebles = response.body();
                     if(!listaInmuebles.isEmpty()){
-                        mListaInmuebles.setValue(listaInmuebles);
+                        mListaInmuebles.postValue(listaInmuebles);
                     }else{
                         Toast.makeText(context, "La lista esta vacía", Toast.LENGTH_SHORT).show();
                     }

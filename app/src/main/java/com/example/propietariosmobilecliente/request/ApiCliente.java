@@ -80,7 +80,7 @@ public class ApiCliente {
         //cambiar password del propietario logueado
         @FormUrlEncoded
         @PUT("propietarioapi/password")
-        Call<String> cambiarPassword(@Header("Authorization")String token, @Field("Password") String password);
+        Call<String> cambiarPassword(@Header("Authorization")String token, @Field("PasswordVieja") String passwordVieja, @Field("Password") String password);
 
         //cambiar la disponibilidad del inmueble que se esta viendo el detalle
         @PUT("inmuebleapi/disponibilidad/{id}")
@@ -94,7 +94,7 @@ public class ApiCliente {
         //editar avatar propietario
         @Multipart
         @PUT("propietarioapi/avatar")
-        Call<String> editarAvatar(@Header("Authorization") String token, @Part String avatar);
+        Call<String> editarAvatar(@Header("Authorization") String token, @Part MultipartBody.Part avatar);
 
         //obtener todos los contratos que tengan los inmuebles del propietario logueado
         @GET("contratoapi")
@@ -107,5 +107,11 @@ public class ApiCliente {
         //crear inmueble
         @POST("inmuebleapi")
         Call<String> crearInmueble(@Header("Authorization") String token, @Field("tipo")String tipo, @Field("metros2")String metros2, @Field("uso")String uso,@Field("cantidadAmbientes")int cantidadAmbientes,@Field("precio")double precio,@Field("descripcion")String descripcion, @Field("cochera")boolean cochera,@Field("piscina")boolean piscina,@Field("mascotas")boolean mascotas, @Field("urlImagen")String urlImagen, @Field("calle")String calle, @Field("altura")String altura, @Field("ciudad")String ciudad);
+
+        //recuperar password
+        @FormUrlEncoded
+        @POST("propietarioapi/recuperarpassword")
+        Call<String> recuperarPassword(@Field("correo") String correo);
+
     }
 }

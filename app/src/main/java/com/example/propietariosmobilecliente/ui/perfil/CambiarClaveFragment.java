@@ -35,12 +35,13 @@ public class CambiarClaveFragment extends Fragment {
             public void onChanged(String s) {
                 binding.tvMensajeCambiarClave.setText(s);
                 binding.etCambiarClave.setText("");
+                binding.etCambiarClavePasswordVieja.setText("");
             }
         });
         binding.btnCambiarClaveGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vm.cambiarPassword(binding.etCambiarClave.getText().toString());
+                vm.cambiarPassword(binding.etCambiarClavePasswordVieja.getText().toString(), binding.etCambiarClave.getText().toString());
             }
         });
         return binding.getRoot();

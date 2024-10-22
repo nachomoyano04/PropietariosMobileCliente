@@ -1,56 +1,60 @@
-package com.example.propietariosmobilecliente.ui.perfil;
+package com.example.propietariosmobilecliente.ui.login;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
 import com.example.propietariosmobilecliente.request.ApiCliente;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CambiarClaveViewModel extends AndroidViewModel {
-    private Context context;
-    private MutableLiveData<String> mMensaje;
+public class RecuperarPassActivityViewModel extends AndroidViewModel {
 
-    public CambiarClaveViewModel(@NonNull Application application) {
+    private MutableLiveData<String> mMensaje;
+    private Context context;
+
+    public RecuperarPassActivityViewModel(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
     }
 
-    public LiveData<String> getMMensaje() {
-        if (mMensaje == null) {
+    public LiveData<String> getMMensaje(){
+        if(mMensaje == null){
             mMensaje = new MutableLiveData<>();
         }
         return mMensaje;
     }
 
-    public void leerMutable(String mensaje) {
-        mMensaje.setValue(mensaje);
-    }
-
-    public void cambiarPassword(String passwordVieja, String password) {
-        if (!passwordVieja.isEmpty() && !password.isEmpty()) {
+    public void enviarCorreo(String correo){
+        if(!correo.isEmpty()){
             ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
-            api.cambiarPassword(ApiCliente.getToken(context), passwordVieja, password).enqueue(new Callback<String>() {
+            api.recuperarPassword(correo).enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
-                    if (response.isSuccessful()) {
+                    if(response.isSuccessful()){
                         mMensaje.postValue(response.body());
-                    } else {
+                    }else{
                         mMensaje.postValue(response.message());
                     }
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable throwable) {
-                    mMensaje.setValue("Error en el servidor");
+                    Toast.makeText(context, throwable.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-        } else {
-            mMensaje.setValue("El campo es requerido");
+        }else{
+            mMensaje.postValue("Debe ingresar un correo");
         }
     }
+
 }

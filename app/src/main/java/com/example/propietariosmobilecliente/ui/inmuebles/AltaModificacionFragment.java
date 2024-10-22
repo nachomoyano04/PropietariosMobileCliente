@@ -3,6 +3,7 @@ package com.example.propietariosmobilecliente.ui.inmuebles;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ public class AltaModificacionFragment extends Fragment {
 
     private FragmentAltaModificacionBinding binding;
     private AltaModificacionViewModel vm;
+//    private imagenU
 
     public static AltaModificacionFragment newInstance() {
         return new AltaModificacionFragment();
@@ -55,8 +57,33 @@ public class AltaModificacionFragment extends Fragment {
                         .into(binding.ivAvatarAMInmueble);
             }
         });
+        binding.btnGuardarEditAltaInmueble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String calle = binding.etCalleAMInmueble.getText().toString();
+                String altura = binding.etAlturaAMInmueble.getText().toString();
+                String ciudad = binding.etCiudadAMInmueble.getText().toString();
+                String tipo = binding.etTipoAMInmueble.getText().toString();
+                String uso = binding.etUsoAMInmueble.getText().toString();
+                String metros2 = binding.etMetros2AMInmueble.getText().toString();
+                String descripcion = binding.etDescripcionAMInmueble.getText().toString();
+                String ambientes = binding.etAmbientesAMInmueble.getText().toString();
+                String precio = binding.etPrecioAMInmueble.getText().toString();
+                boolean mascotas = binding.switchMascotasAMInmueble.isChecked();
+                boolean cochera = binding.switchCocheraAMInmueble.isChecked();
+                boolean piscina = binding.switchPiscinaAMInmueble.isChecked();
+//                int avatar = binding.ivAvatarAMInmueble.
+//                vm.guardarInmueble(calle, altura, ciudad, tipo, uso, metros2, descripcion, ambientes, precio, mascotas, cochera, piscina, avatar);
+            }
+        });
         vm.llenarCampos(getArguments());
         return binding.getRoot();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 
     @Override
