@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="success">#198754</color>
     <color name="primary">#0d6efd</color>
+    <color name="background_option">#CCDCF4</color>
 </resources>

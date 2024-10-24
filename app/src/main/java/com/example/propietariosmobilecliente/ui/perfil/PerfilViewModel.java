@@ -11,17 +11,23 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.propietariosmobilecliente.R;
 import com.example.propietariosmobilecliente.models.Propietario;
 import com.example.propietariosmobilecliente.request.ApiCliente;
 import com.google.android.gms.common.api.Api;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PerfilViewModel extends AndroidViewModel {
-    public Context context;
-    public MutableLiveData<Propietario> mPropietario;
+    private Context context;
+    private MutableLiveData<Propietario> mPropietario;
+    private MutableLiveData<Boolean> mBoolean = new MutableLiveData<>(false);
+    private MutableLiveData<String> mText = new MutableLiveData<>("Editar campos");
+    private MutableLiveData<Integer> mColor = new MutableLiveData<>(R.color.primary);
 
     public PerfilViewModel(@NonNull Application application) {
         super(application);
@@ -33,6 +39,18 @@ public class PerfilViewModel extends AndroidViewModel {
             mPropietario = new MutableLiveData<>();
         }
         return mPropietario;
+    }
+
+    public LiveData<Boolean> getMBoolean(){
+        return mBoolean;
+    }
+
+    public LiveData<String> getMText(){
+        return mText;
+    }
+
+    public LiveData<Integer> getMColor(){
+        return mColor;
     }
 
     public void cargarDatos(){
@@ -60,21 +78,39 @@ public class PerfilViewModel extends AndroidViewModel {
     }
 
     public void guardarDatos(Propietario p){
-        ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
-        api.editarPropietario(ApiCliente.getToken(context), p.getDni(), p.getApellido(), p.getNombre(), p.getTelefono(), p.getCorreo()).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if(response.isSuccessful()){
-                    Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(context, "Error en la respuesta", Toast.LENGTH_SHORT).show();
+        if(mBoolean.getValue()){
+            ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
+            api.editarPropietario(ApiCliente.getToken(context), p.getDni(), p.getApellido(), p.getNombre(), p.getTelefono(), p.getCorreo()).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        try {
+                            String errorBody = response.errorBody().string();
+                            Toast.makeText(context, "Error: "+errorBody, Toast.LENGTH_SHORT).show();
+                        } catch (IOException e) {
+                            Log.e("HTTP_ERROR", "Error al procesar la respuesta", e);
+                        }
+                    }
                 }
-            }
+                @Override
+                public void onFailure(Call<String> call, Throwable throwable) {
+                    Toast.makeText(context, "Error en el servidor", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable throwable) {
-                Toast.makeText(context, "Error en el servidor", Toast.LENGTH_SHORT).show();
-            }
-        });
+    public void setGuardar() {
+        if(mBoolean.getValue()){
+            mBoolean.setValue(false);
+            mText.setValue("Editar campos");
+            mColor.setValue(R.color.primary);
+        }else{
+            mBoolean.setValue(true);
+            mText.setValue("Guardar");
+            mColor.setValue(R.color.success);
+        }
     }
 }

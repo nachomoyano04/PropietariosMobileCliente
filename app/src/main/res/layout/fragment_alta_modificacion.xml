@@ -284,11 +284,12 @@
         android:id="@+id/ivAvatarAMInmueble"
         android:layout_width="263dp"
         android:layout_height="174dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+        app:layout_constraintVertical_bias="0.0"
         tools:src="@tools:sample/avatars" />
 
     <Button
@@ -296,7 +297,7 @@
         android:layout_width="116dp"
         android:layout_height="57dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/primary"
         android:text="Subir imagen"
@@ -305,7 +306,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ivAvatarAMInmueble"
         app:layout_constraintTop_toBottomOf="@+id/btnGuardarEditAltaInmueble"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@id/linearLayout10"

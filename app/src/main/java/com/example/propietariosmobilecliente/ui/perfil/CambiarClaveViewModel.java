@@ -2,11 +2,17 @@ package com.example.propietariosmobilecliente.ui.perfil;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.example.propietariosmobilecliente.request.ApiCliente;
+
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,7 +46,12 @@ public class CambiarClaveViewModel extends AndroidViewModel {
                     if (response.isSuccessful()) {
                         mMensaje.postValue(response.body());
                     } else {
-                        mMensaje.postValue(response.message());
+                        try {
+                            String errorBody = response.errorBody().string();
+                            mMensaje.postValue("Error: "+errorBody);
+                        } catch (IOException e) {
+                            Log.e("HTTP_ERROR", "Error al procesar la respuesta", e);
+                        }
                     }
                 }
 

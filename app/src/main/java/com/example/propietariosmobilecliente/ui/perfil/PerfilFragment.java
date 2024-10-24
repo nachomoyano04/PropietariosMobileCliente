@@ -3,6 +3,7 @@ package com.example.propietariosmobilecliente.ui.perfil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -36,6 +37,34 @@ public class PerfilFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentPerfilBinding.inflate(inflater, container, false);
         vm = new ViewModelProvider(this).get(PerfilViewModel.class);
+        vm.getMBoolean().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                binding.tvDniPerfil.setEnabled(aBoolean);
+                binding.tvApellidoPerfil.setEnabled(aBoolean);
+                binding.tvNombrePerfil.setEnabled(aBoolean);
+                binding.tvTelefonoPerfil.setEnabled(aBoolean);
+                binding.tvCorreoPerfil.setEnabled(aBoolean);
+                binding.btnCambiarClave.setEnabled(!aBoolean);
+                binding.btnPerfilEditarAvatar.setEnabled(!aBoolean);
+                binding.btnCancelarEditarPerfil.setVisibility(aBoolean.compareTo(!aBoolean));
+            }
+        });
+
+        vm.getMColor().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                binding.btnGuardarEditarPerfil.setBackgroundColor(getResources().getColor(integer));
+            }
+        });
+
+        vm.getMText().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.btnGuardarEditarPerfil.setText(s);
+            }
+        });
+
         vm.getMPropietario().observe(getViewLifecycleOwner(), new Observer<Propietario>() {
             @Override
             public void onChanged(Propietario p) {
@@ -52,7 +81,7 @@ public class PerfilFragment extends Fragment {
                 avatar = p.getAvatar();
             }
         });
-        vm.cargarDatos();
+
         binding.btnGuardarEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +92,7 @@ public class PerfilFragment extends Fragment {
                 String correo = binding.tvCorreoPerfil.getText().toString();
                 Propietario p = new Propietario(-1, dni, apellido, nombre, telefono, correo, "", null,true);
                 vm.guardarDatos(p);
+                vm.setGuardar();
             }
         });
         binding.btnCambiarClave.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +109,15 @@ public class PerfilFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.nav_editar_avatar, b);
             }
         });
+        binding.btnCancelarEditarPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vm.setGuardar();
+            }
+        });
+
+        vm.cargarDatos();
+
         return binding.getRoot();
     }
 
