@@ -19,7 +19,6 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -45,7 +44,6 @@ public class EditarAvatarFragment extends Fragment {
         vm.getMAvatar().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String avatar) {
-                Toast.makeText(getContext(), avatar, Toast.LENGTH_SHORT).show();
                 Glide.with(getContext())
                         .load(avatar.startsWith("http")?avatar:Uri.parse(avatar))
                         .placeholder(R.drawable.ic_launcher_background)

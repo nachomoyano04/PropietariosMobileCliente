@@ -105,8 +105,33 @@ public class ApiCliente {
         Call<ArrayList<Pago>> getPagosPorContrato(@Header("Authorization") String token, @Path("id") int id);
 
         //crear inmueble
+        @FormUrlEncoded
         @POST("inmuebleapi")
-        Call<String> crearInmueble(@Header("Authorization") String token, @Field("tipo")String tipo, @Field("metros2")String metros2, @Field("uso")String uso,@Field("cantidadAmbientes")int cantidadAmbientes,@Field("precio")double precio,@Field("descripcion")String descripcion, @Field("cochera")boolean cochera,@Field("piscina")boolean piscina,@Field("mascotas")boolean mascotas, @Field("urlImagen")String urlImagen, @Field("calle")String calle, @Field("altura")String altura, @Field("ciudad")String ciudad);
+        Call<String> crearInmueble(@Header("Authorization") String token, @Field("tipo")String tipo,
+                                   @Field("metros2")String metros2, @Field("uso")String uso,
+                                   @Field("cantidadAmbientes")int cantidadAmbientes,@Field("precio")double precio,
+                                   @Field("urlImagen") String urlImagen, @Field("descripcion")String descripcion,
+                                   @Field("cochera")boolean cochera,@Field("piscina")boolean piscina,
+                                   @Field("disponible")boolean disponible,
+                                   @Field("mascotas")boolean mascotas, @Field("calle")String calle,
+                                   @Field("altura")int altura, @Field("ciudad")String ciudad);
+
+        //editar inmueble
+        @FormUrlEncoded
+        @PUT("inmuebleapi/{id}")
+        Call<String> editarInmueble(@Header("Authorization") String token,@Path("id") int id, @Field("tipo")String tipo,
+                                    @Field("metros2")String metros2, @Field("uso")String uso,
+                                    @Field("cantidadAmbientes")int cantidadAmbientes,@Field("precio")double precio,
+                                    @Field("urlImagen") String urlImagen, @Field("descripcion")String descripcion,
+                                    @Field("cochera")boolean cochera,@Field("piscina")boolean piscina,
+                                    @Field("disponible")boolean disponible,
+                                    @Field("mascotas")boolean mascotas, @Field("calle")String calle,
+                                    @Field("altura")int altura, @Field("ciudad")String ciudad);
+
+        //editar imagen inmueble
+        @Multipart
+        @PUT("inmuebleapi/imagen/{id}")
+        Call<String> editarImagenInmueble(@Header("Authorization") String token,  @Part MultipartBody.Part imagen, @Path("id") int id);
 
         //recuperar password
         @FormUrlEncoded

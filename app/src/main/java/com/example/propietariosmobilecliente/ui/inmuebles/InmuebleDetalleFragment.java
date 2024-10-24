@@ -65,8 +65,14 @@ public class InmuebleDetalleFragment extends Fragment {
                 vm.setearImagenMascotas(i.isMascotas());
                 binding.tvTipoDetInm.setText(i.getTipo());
                 binding.tvDescripcionDetInm.setText(i.getDescripcion());
+                vm.setearImagen(i.getUrlImagen());
+            }
+        });
+        vm.getMImagen().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
                 Glide.with(getContext())
-                        .load(i.getUrlImagen())
+                        .load(s)
                         .placeholder(R.drawable.ic_launcher_background)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(binding.ivImagenDetInm);

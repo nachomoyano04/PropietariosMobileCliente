@@ -1,15 +1,21 @@
 package com.example.propietariosmobilecliente.ui.inmuebles;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +30,8 @@ public class AltaModificacionFragment extends Fragment {
 
     private FragmentAltaModificacionBinding binding;
     private AltaModificacionViewModel vm;
-//    private imagenU
+    private Intent intent;
+    private ActivityResultLauncher launcher;
 
     public static AltaModificacionFragment newInstance() {
         return new AltaModificacionFragment();
@@ -35,6 +42,7 @@ public class AltaModificacionFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentAltaModificacionBinding.inflate(inflater, container, false);
         vm = new ViewModelProvider(this).get(AltaModificacionViewModel.class);
+        abrirGaleria();
         vm.getMInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
             @Override
             public void onChanged(Inmueble inmueble) {
@@ -50,8 +58,14 @@ public class AltaModificacionFragment extends Fragment {
                 binding.switchMascotasAMInmueble.setChecked(inmueble.isMascotas());
                 binding.switchCocheraAMInmueble.setChecked(inmueble.isCochera());
                 binding.switchPiscinaAMInmueble.setChecked(inmueble.isPiscina());
+                vm.setearAvatar(inmueble.getUrlImagen());
+            }
+        });
+        vm.getMAvatar().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
                 Glide.with(getContext())
-                        .load(inmueble.getUrlImagen())
+                        .load(Uri.parse(s))
                         .placeholder(R.drawable.ic_launcher_background)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(binding.ivAvatarAMInmueble);
@@ -72,18 +86,27 @@ public class AltaModificacionFragment extends Fragment {
                 boolean mascotas = binding.switchMascotasAMInmueble.isChecked();
                 boolean cochera = binding.switchCocheraAMInmueble.isChecked();
                 boolean piscina = binding.switchPiscinaAMInmueble.isChecked();
-//                int avatar = binding.ivAvatarAMInmueble.
-//                vm.guardarInmueble(calle, altura, ciudad, tipo, uso, metros2, descripcion, ambientes, precio, mascotas, cochera, piscina, avatar);
+                vm.guardarInmueble(getArguments(), calle, altura, ciudad, tipo, uso, metros2, descripcion, ambientes, precio, mascotas, cochera, piscina);
+            }
+        });
+        binding.btnSubirImagenAMInmueble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launcher.launch(intent);
             }
         });
         vm.llenarCampos(getArguments());
         return binding.getRoot();
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
+    private void abrirGaleria(){
+        intent = new Intent(Intent.ACTION_OPEN_DOCUMENT, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult o) {
+                vm.recibirFoto(o);
+            }
+        });
     }
 
     @Override

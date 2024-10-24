@@ -71,11 +71,10 @@ public class EditarAvatarViewModel extends AndroidViewModel {
 
     public void guardarAvatar() {
         Uri avatarUri = Uri.parse(mAvatar.getValue());
-        Log.d("Avatar URI", mAvatar.getValue());
-        Toast.makeText(context, "Avatar uri: " + avatarUri, Toast.LENGTH_SHORT).show();
         try {
             InputStream inputStream = context.getContentResolver().openInputStream(avatarUri);
-            File file = new File(context.getCacheDir(), "avatar.jpg");
+            String fileName = "avatar"+System.currentTimeMillis()+".jpg";
+            File file = new File(context.getCacheDir(), fileName);
             FileOutputStream outputStream = new FileOutputStream(file);
             byte[] buffer = new byte[1024];
             int length;
@@ -85,10 +84,8 @@ public class EditarAvatarViewModel extends AndroidViewModel {
             outputStream.close();
             inputStream.close();
 
-            Log.d("Avatar File", file.getAbsolutePath() + " exists: " + file.exists() + " size: " + file.length());
-
             RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
-            MultipartBody.Part avatar = MultipartBody.Part.createFormData("avatar", file.getName(), requestFile); // Asegúrate de que el nombre "avatar" coincida con el del servidor
+            MultipartBody.Part avatar = MultipartBody.Part.createFormData("avatar", file.getName(), requestFile);
 
             ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
             api.editarAvatar(ApiCliente.getToken(context), avatar).enqueue(new Callback<String>() {
@@ -97,19 +94,12 @@ public class EditarAvatarViewModel extends AndroidViewModel {
                     if (response.isSuccessful()) {
                         Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
                     } else {
-                        // Leer el cuerpo de error
-                        try {
-                            String errorBody = response.errorBody().string();
-                            Toast.makeText(context, "Error: " + errorBody, Toast.LENGTH_SHORT).show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable throwable) {
-                    Log.d("ErrorAvatar", throwable.getMessage());
                     Toast.makeText(context, throwable.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });

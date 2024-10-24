@@ -26,6 +26,7 @@ public class InmuebleDetalleViewModel extends AndroidViewModel {
     private MutableLiveData<Integer> mPiscina;
     private MutableLiveData<Integer> mMascotas;
     private MutableLiveData<Integer> mCochera;
+    private MutableLiveData<String> mImagen;
     private Context context;
 
     public InmuebleDetalleViewModel(@NonNull Application application) {
@@ -59,6 +60,21 @@ public class InmuebleDetalleViewModel extends AndroidViewModel {
             mInmueble = new MutableLiveData<>();
         }
         return mInmueble;
+    }
+
+    public LiveData<String> getMImagen(){
+        if(mImagen == null){
+            mImagen = new MutableLiveData<>();
+        }
+        return mImagen;
+    }
+
+    public void setearImagen(String imagen){
+        if(imagen.startsWith("http")){
+            mImagen.setValue(imagen);
+        }else{
+            mImagen.setValue("http://192.168.1.9:5203/img/inmueble/"+imagen);
+        }
     }
 
     public void leerDatos(Bundle b){

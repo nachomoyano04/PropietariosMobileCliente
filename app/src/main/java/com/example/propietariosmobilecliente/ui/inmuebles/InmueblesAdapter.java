@@ -38,8 +38,12 @@ public class InmueblesAdapter extends RecyclerView.Adapter<InmueblesAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolderInmueble holder, int position) {
         Inmueble i = inmuebles.get(position);
+        String urlImagen = i.getUrlImagen();
+        if(!i.getUrlImagen().startsWith("http")){
+            urlImagen = "http://192.168.1.9:5203/img/inmueble/"+urlImagen;
+        }
         Glide.with(holder.itemView)
-                .load(i.getUrlImagen())
+                .load(urlImagen)
                 .placeholder(R.drawable.ic_launcher_background)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.ivFotoInmueble);
