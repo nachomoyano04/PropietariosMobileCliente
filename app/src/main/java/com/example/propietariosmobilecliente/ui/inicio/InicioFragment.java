@@ -32,9 +32,10 @@ public class InicioFragment extends Fragment {
          */
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            LatLng ubiEnVM = new LatLng(-33.675982, -65.457245);
+            googleMap.addMarker(new MarkerOptions().position(ubiEnVM).title("Ubicación de la inmobiliaria"));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(ubiEnVM));
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubiEnVM,15));
         }
     };
 

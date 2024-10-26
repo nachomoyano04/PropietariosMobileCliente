@@ -25,6 +25,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
@@ -137,6 +138,10 @@ public class ApiCliente {
         @FormUrlEncoded
         @POST("propietarioapi/recuperarpassword")
         Call<String> recuperarPassword(@Field("correo") String correo);
+
+        @FormUrlEncoded
+        @PATCH("propietarioapi/nuevapassword")
+        Call<String> nuevaPassword(@Header("Authorization") String token, @Field("nuevaPassword") String nuevaPassword);
 
     }
 }
