@@ -140,7 +140,7 @@ public class ApiCliente {
         Call<String> recuperarPassword(@Field("correo") String correo);
 
         @FormUrlEncoded
-        @PATCH("propietarioapi/nuevapassword")
+        @PUT("propietarioapi/nuevapassword")
         Call<String> nuevaPassword(@Header("Authorization") String token, @Field("nuevaPassword") String nuevaPassword);
 
     }

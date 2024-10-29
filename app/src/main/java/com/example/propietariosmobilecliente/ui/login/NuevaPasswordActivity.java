@@ -36,8 +36,8 @@ public class NuevaPasswordActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = getIntent();
                 Uri data = i.getData();
-                String token = data.getQueryParameter("acces_token");
-                vm.guardarNuevaPassword(token, binding.etNuevaPasswordRecuperar.getText().toString());
+                String token = data.getQueryParameter("access_token");
+                vm.guardarNuevaPassword("Bearer "+token, binding.etNuevaPasswordRecuperar.getText().toString());
             }
         });
         setContentView(binding.getRoot());

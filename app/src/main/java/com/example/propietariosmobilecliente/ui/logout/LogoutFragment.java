@@ -16,8 +16,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.propietariosmobilecliente.MainActivity;
 import com.example.propietariosmobilecliente.R;
 import com.example.propietariosmobilecliente.ui.inicio.InicioFragment;
+import com.example.propietariosmobilecliente.ui.login.LoginActivity;
 
 public class LogoutFragment extends Fragment {
 
@@ -41,7 +43,12 @@ public class LogoutFragment extends Fragment {
                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        getActivity().finishAffinity();
+                        getActivity().finish();
+                        //redirigimos por las dudas siempre al login porque si viene
+                        //desde el nueva password al desloguearse vuelve a la ultima activity
+                        Intent intent = new Intent(getContext(), LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {

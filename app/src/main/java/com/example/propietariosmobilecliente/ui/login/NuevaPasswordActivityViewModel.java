@@ -2,6 +2,8 @@ package com.example.propietariosmobilecliente.ui.login;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -9,6 +11,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.propietariosmobilecliente.MainActivity;
 import com.example.propietariosmobilecliente.request.ApiCliente;
 
 import java.io.IOException;
@@ -35,17 +38,19 @@ public class NuevaPasswordActivityViewModel extends AndroidViewModel {
     }
 
     public void guardarNuevaPassword(String token, String nuevaPassword){
-        if(!nuevaPassword.isEmpty()){
-            Toast.makeText(context, token, Toast.LENGTH_SHORT).show();
+        if(!nuevaPassword.isEmpty() && !token.isEmpty()){
             ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
             api.nuevaPassword(token, nuevaPassword).enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
                     if(response.isSuccessful()){
                         Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(context, LoginActivity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(i);
                     }else{
                         try {
-                            Toast.makeText(context, response.errorBody().string(), Toast.LENGTH_SHORT).show();
+                            mMensaje.postValue(response.errorBody().string());
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
@@ -54,7 +59,7 @@ public class NuevaPasswordActivityViewModel extends AndroidViewModel {
 
                 @Override
                 public void onFailure(Call<String> call, Throwable throwable) {
-                    Toast.makeText(context, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    mMensaje.postValue(throwable.getMessage());
                 }
             });
         }else{
