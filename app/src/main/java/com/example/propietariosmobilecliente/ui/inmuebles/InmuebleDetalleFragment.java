@@ -81,7 +81,7 @@ public class InmuebleDetalleFragment extends Fragment {
         binding.switchDisponibleDetInm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                vm.cambiarDisponibilidadInmueble();
+                vm.cambiarDisponibilidadInmueble(b);
             }
         });
         binding.btnEditarInmuebleDetInm.setOnClickListener(new View.OnClickListener() {

@@ -3,6 +3,7 @@ package com.example.propietariosmobilecliente.ui.inmuebles;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -84,23 +85,27 @@ public class InmuebleDetalleViewModel extends AndroidViewModel {
         }
     }
 
-    public void cambiarDisponibilidadInmueble() {
-        ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
-        api.cambiarDisponilidad(ApiCliente.getToken(context), mInmueble.getValue().getIdInmueble()).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if(response.isSuccessful()){
-                    Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(context, "Error al cambiar la disponibilidad", Toast.LENGTH_SHORT).show();
+    public void cambiarDisponibilidadInmueble(boolean b) {
+        if(mInmueble.getValue().isDisponible() != b){
+            ApiCliente.InmobiliariaService api = ApiCliente.getApiInmobiliaria(context);
+            api.cambiarDisponilidad(ApiCliente.getToken(context), mInmueble.getValue().getIdInmueble()).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    if(response.isSuccessful()){
+                        Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
+                        mInmueble.getValue().setDisponible(b);
+                    }else{
+                        Toast.makeText(context, "Error al cambiar la disponibilidad", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable throwable) {
-                Toast.makeText(context, "Error en el servidor", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<String> call, Throwable throwable) {
+                    Toast.makeText(context, "Error en el servidor", Toast.LENGTH_SHORT).show();
+                    Log.d("ErrorCambioDisponibilidad", throwable.getMessage());
+                }
+            });
+        }
     }
 
     public void setearImagenCochera(boolean cochera) {
