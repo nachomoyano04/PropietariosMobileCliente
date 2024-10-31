@@ -12,6 +12,8 @@ import androidx.lifecycle.AndroidViewModel;
 import com.example.propietariosmobilecliente.MainActivity;
 import com.example.propietariosmobilecliente.request.ApiCliente;
 
+import java.io.Serializable;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,4 +60,9 @@ public class LoginActivityViewModel extends AndroidViewModel {
         getApplication().startActivity(i);
     }
 
+    public void mostrarMensaje(Serializable mensaje) {
+        if(mensaje != null){
+            Toast.makeText(context, "Sesión expirada, debe volver a loguearse!", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.propietariosmobilecliente;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
@@ -88,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(avatar);
                 }else{
-                    Toast.makeText(MainActivity.this, "Error al traer al propietario", Toast.LENGTH_SHORT).show();
+                    if(response.code() != 401){
+                        Toast.makeText(MainActivity.this, "Error al traer al propietario", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 

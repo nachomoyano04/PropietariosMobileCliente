@@ -14,6 +14,7 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 
 import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -44,8 +45,12 @@ public class ApiCliente {
 
     public static InmobiliariaService getApiInmobiliaria(Context context){
         Gson gson = new GsonBuilder().setLenient().create();
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .addInterceptor(new AuthorizeInterceptor(context))
+                .build();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URLBASE)
+                .client(httpClient)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();

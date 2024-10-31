@@ -1,7 +1,9 @@
 package com.example.propietariosmobilecliente.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,8 @@ public class LoginActivity extends AppCompatActivity {
         vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(LoginActivityViewModel.class);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Intent i = getIntent();
+        vm.mostrarMensaje(i.getSerializableExtra("mensaje"));
         //BOTON INGRESAR
         binding.btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
