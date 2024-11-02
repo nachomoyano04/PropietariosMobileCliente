@@ -46,7 +46,9 @@ public class PagosViewModel extends AndroidViewModel {
                 if(response.isSuccessful()){
                     mListaPagos.setValue(response.body());
                 }else{
-                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                    if(response.code() != 401){
+                        Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 

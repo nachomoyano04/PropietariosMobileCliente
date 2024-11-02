@@ -46,10 +46,16 @@ public class ContratosViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<ArrayList<Contrato>> call, Response<ArrayList<Contrato>> response) {
                 if(response.isSuccessful()){
-                    if(response.body() != null)
-                    mListaContratos.setValue(response.body());
+                    if(response.body() != null){
+                        mListaContratos.setValue(response.body());
+                    }
+                    if(response.code() == 204){
+                        Toast.makeText(context, "No existen contratos para sus inmuebles", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
-                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                    if(response.code() != 401){
+                        Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 

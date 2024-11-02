@@ -101,7 +101,9 @@ public class AltaModificacionViewModel extends AndroidViewModel {
                             Toast.makeText(context, "IdCreado: "+id, Toast.LENGTH_SHORT).show();
                             subirImagen(id);
                         }else{
-                            Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                            if(response.code() != 401){
+                                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
 
@@ -122,7 +124,9 @@ public class AltaModificacionViewModel extends AndroidViewModel {
                                 subirImagen(i.getIdInmueble());
                             }
                         }else{
-                            Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                            if(response.code() != 401){
+                                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
 
@@ -159,7 +163,9 @@ public class AltaModificacionViewModel extends AndroidViewModel {
                     if(response.isSuccessful()){
                         Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
                     }else{
-                        Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                        if(response.code() != 401){
+                            Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
 

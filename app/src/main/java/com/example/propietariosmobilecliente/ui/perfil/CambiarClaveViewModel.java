@@ -46,11 +46,13 @@ public class CambiarClaveViewModel extends AndroidViewModel {
                     if (response.isSuccessful()) {
                         mMensaje.postValue(response.body());
                     } else {
-                        try {
-                            String errorBody = response.errorBody().string();
-                            mMensaje.postValue("Error: "+errorBody);
-                        } catch (IOException e) {
-                            Log.e("HTTP_ERROR", "Error al procesar la respuesta", e);
+                        if(response.code() != 401){
+                            try {
+                                String errorBody = response.errorBody().string();
+                                mMensaje.postValue("Error: "+errorBody);
+                            } catch (IOException e) {
+                                Log.e("HTTP_ERROR", "Error al procesar la respuesta", e);
+                            }
                         }
                     }
                 }

@@ -49,10 +49,12 @@ public class NuevaPasswordActivityViewModel extends AndroidViewModel {
                         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(i);
                     }else{
-                        try {
-                            mMensaje.postValue(response.errorBody().string());
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
+                        if(response.code() != 401){
+                            try {
+                                mMensaje.postValue(response.errorBody().string());
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
                     }
                 }

@@ -94,7 +94,9 @@ public class EditarAvatarViewModel extends AndroidViewModel {
                     if (response.isSuccessful()) {
                         Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                        if(response.code() != 401){
+                            Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
 

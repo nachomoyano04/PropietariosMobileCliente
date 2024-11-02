@@ -51,13 +51,16 @@ public class InmueblesViewModel extends AndroidViewModel {
                     ArrayList<Inmueble> listaInmuebles = response.body();
                     if(!listaInmuebles.isEmpty()){
                         mListaInmuebles.postValue(listaInmuebles);
-                    }else{
-                        Toast.makeText(context, "La lista esta vacía", Toast.LENGTH_SHORT).show();
+                    }
+                    if(response.code() == 204){
+                        Toast.makeText(context, "No existen inmuebles, añada uno", Toast.LENGTH_SHORT).show();
                     }
                 }else{
-                    Toast.makeText(context, "Error en la respuesta", Toast.LENGTH_SHORT).show();
-                    if (!response.isSuccessful()) {
-                        Log.e("ErrorRespuesta", "Código: " + response.code() + ", Mensaje: " + response.errorBody().toString());
+                    if(response.code() != 401){
+                        Toast.makeText(context, "Error en la respuesta", Toast.LENGTH_SHORT).show();
+                        if (!response.isSuccessful()) {
+                            Log.e("ErrorRespuesta", "Código: " + response.code() + ", Mensaje: " + response.errorBody().toString());
+                        }
                     }
                 }
             }

@@ -11,6 +11,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.propietariosmobilecliente.MainActivity;
 import com.example.propietariosmobilecliente.R;
 import com.example.propietariosmobilecliente.models.Propietario;
 import com.example.propietariosmobilecliente.request.ApiCliente;
@@ -63,7 +64,9 @@ public class PerfilViewModel extends AndroidViewModel {
                     if(response.body() != null){
                         mPropietario.setValue(response.body());
                     }else{
-                        Toast.makeText(context, "No existe informacion de este propietario", Toast.LENGTH_SHORT).show();
+                        if(response.code() != 401){
+                            Toast.makeText(context, "No existe informacion de este propietario", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }else{
                     Toast.makeText(context, "Error al obtener el propietario", Toast.LENGTH_SHORT).show();
@@ -86,11 +89,13 @@ public class PerfilViewModel extends AndroidViewModel {
                     if (response.isSuccessful()) {
                         Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
                     } else {
-                        try {
-                            String errorBody = response.errorBody().string();
-                            Toast.makeText(context, "Error: "+errorBody, Toast.LENGTH_SHORT).show();
-                        } catch (IOException e) {
-                            Log.e("HTTP_ERROR", "Error al procesar la respuesta", e);
+                        if(response.code() != 401){
+                            try {
+                                String errorBody = response.errorBody().string();
+                                Toast.makeText(context, "Error: "+errorBody, Toast.LENGTH_SHORT).show();
+                            } catch (IOException e) {
+                                Log.e("HTTP_ERROR", "Error al procesar la respuesta", e);
+                            }
                         }
                     }
                 }

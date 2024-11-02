@@ -95,7 +95,9 @@ public class InmuebleDetalleViewModel extends AndroidViewModel {
                         Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
                         mInmueble.getValue().setDisponible(b);
                     }else{
-                        Toast.makeText(context, "Error al cambiar la disponibilidad", Toast.LENGTH_SHORT).show();
+                        if(response.code() != 401){
+                            Toast.makeText(context, "Error al cambiar la disponibilidad", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
 
