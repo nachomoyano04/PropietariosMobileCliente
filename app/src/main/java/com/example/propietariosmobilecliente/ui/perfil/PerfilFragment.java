@@ -21,6 +21,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.propietariosmobilecliente.R;
 import com.example.propietariosmobilecliente.databinding.FragmentPerfilBinding;
 import com.example.propietariosmobilecliente.models.Propietario;
+import com.example.propietariosmobilecliente.request.ApiCliente;
 
 public class PerfilFragment extends Fragment {
 
@@ -74,7 +75,7 @@ public class PerfilFragment extends Fragment {
                 binding.tvTelefonoPerfil.setText(p.getTelefono());
                 binding.tvCorreoPerfil.setText(p.getCorreo());
                 Glide.with(getContext())
-                        .load("http://192.168.1.9:5203/img/avatar/"+p.getAvatar())
+                        .load(ApiCliente.getUrlImagenAvatar()+p.getAvatar())
                         .placeholder(R.drawable.ic_launcher_background)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(binding.ivAvatarPerfil);

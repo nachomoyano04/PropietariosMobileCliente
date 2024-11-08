@@ -33,7 +33,9 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public class ApiCliente {
-    private static final String URLBASE = "http://192.168.1.9:5203/api/";
+    private static final String URLBASE = "http://192.168.1.7:5203/api/";
+    private static final String URLIMAGENINMUEBLE = "http://192.168.1.7:5203/img/inmueble/";
+    private static final String URLIMAGENAVATAR = "http://192.168.1.7:5203/img/avatar/";
     private static SharedPreferences sp;
 
     private static SharedPreferences conectar(Context context){
@@ -41,6 +43,13 @@ public class ApiCliente {
             sp = context.getSharedPreferences("tokenPropietario", 0);
         }
         return sp;
+    }
+
+    public static String getUrlImagenInmueble() {
+        return URLIMAGENINMUEBLE;
+    }
+    public static String getUrlImagenAvatar() {
+        return URLIMAGENAVATAR;
     }
 
     public static InmobiliariaService getApiInmobiliaria(Context context){

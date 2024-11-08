@@ -1,13 +1,22 @@
 package com.example.propietariosmobilecliente.ui.login;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.propietariosmobilecliente.MainActivity;
 import com.example.propietariosmobilecliente.request.ApiCliente;
@@ -19,12 +28,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivityViewModel extends AndroidViewModel {
+
     private Context context;
+
     public LoginActivityViewModel(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
     }
-
 
     public void login(String correo, String password){
         if(!correo.isEmpty() && !password.isEmpty()){
@@ -46,6 +56,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
 
                 @Override
                 public void onFailure(Call<String> call, Throwable throwable) {
+                    Log.d("Servidort", throwable.getMessage());
                     Toast.makeText(context, "Error del servidor", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -63,6 +74,15 @@ public class LoginActivityViewModel extends AndroidViewModel {
     public void mostrarMensaje(Serializable mensaje) {
         if(mensaje != null){
             Toast.makeText(context, "Sesión expirada, debe volver a loguearse!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void realizarLLamada(float aceleracion) {
+        if(aceleracion > 10){
+            Intent i = new Intent(Intent.ACTION_CALL);
+            i.setData(Uri.parse("tel:+5492657356970"));
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i);
         }
     }
 }

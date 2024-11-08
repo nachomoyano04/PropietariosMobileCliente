@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.propietariosmobilecliente.R;
 import com.example.propietariosmobilecliente.models.Inmueble;
+import com.example.propietariosmobilecliente.request.ApiCliente;
 
 import java.util.ArrayList;
 
@@ -40,7 +41,7 @@ public class InmueblesAdapter extends RecyclerView.Adapter<InmueblesAdapter.View
         Inmueble i = inmuebles.get(position);
         String urlImagen = i.getUrlImagen();
         if(!i.getUrlImagen().startsWith("http")){
-            urlImagen = "http://192.168.1.9:5203/img/inmueble/"+urlImagen;
+            urlImagen = ApiCliente.getUrlImagenInmueble()+urlImagen;
         }
         Glide.with(holder.itemView)
                 .load(urlImagen)

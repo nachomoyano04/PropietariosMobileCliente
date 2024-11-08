@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.propietariosmobilecliente.R;
 import com.example.propietariosmobilecliente.models.Contrato;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class ContratosAdapter extends RecyclerView.Adapter<ContratosAdapter.ViewHolderContratos> {
@@ -36,8 +37,11 @@ public class ContratosAdapter extends RecyclerView.Adapter<ContratosAdapter.View
         Contrato c = contratos.get(position);
         holder.tvInmueble.setText(c.getInmueble().getDescripcion());
         holder.tvInquilino.setText(c.getInquilino().nombreYApellido());
-        holder.tvFechaInicio.setText("Desde: " + c.getFechaInicio().toLocalDate());
-        holder.tvFechaFin.setText("Hasta: " + c.getFechaFin().toLocalDate());
+        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("d/MM/uuuu");
+        String fechaDesde = c.getFechaInicio().toLocalDate().format(formatters);
+        String fechaHasta = c.getFechaFin().toLocalDate().format(formatters);
+        holder.tvFechaInicio.setText("Desde: " + fechaDesde);
+        holder.tvFechaFin.setText("Hasta: " + fechaHasta);
         holder.tvImporteContrato.setText("Importe: $"+c.getMonto());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

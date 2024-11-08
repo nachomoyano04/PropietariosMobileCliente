@@ -64,7 +64,7 @@ public class AltaModificacionViewModel extends AndroidViewModel {
         if(urlImagen.startsWith("http")){
             mAvatar.setValue(urlImagen);
         }else{
-            mAvatar.setValue("http://192.168.1.9:5203/img/inmueble/"+urlImagen);
+            mAvatar.setValue(ApiCliente.getUrlImagenInmueble()+urlImagen);
         }
     }
 
@@ -98,7 +98,6 @@ public class AltaModificacionViewModel extends AndroidViewModel {
                     public void onResponse(Call<String> call, Response<String> response) {
                         if(response.isSuccessful()){
                             int id = Integer.parseInt(response.body());
-                            Toast.makeText(context, "IdCreado: "+id, Toast.LENGTH_SHORT).show();
                             subirImagen(id);
                         }else{
                             if(response.code() != 401){

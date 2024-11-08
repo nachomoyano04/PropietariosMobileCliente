@@ -44,7 +44,12 @@ public class PagosViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<ArrayList<Pago>> call, Response<ArrayList<Pago>> response) {
                 if(response.isSuccessful()){
-                    mListaPagos.setValue(response.body());
+                    ArrayList<Pago> pagos = response.body();
+                    if(pagos.isEmpty()){
+                        Toast.makeText(context, "No hay pagos todavía", Toast.LENGTH_SHORT).show();
+                    }else{
+                        mListaPagos.setValue(response.body());
+                    }
                 }else{
                     if(response.code() != 401){
                         Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();

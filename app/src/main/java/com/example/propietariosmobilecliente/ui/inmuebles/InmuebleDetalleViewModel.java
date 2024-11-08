@@ -74,7 +74,7 @@ public class InmuebleDetalleViewModel extends AndroidViewModel {
         if(imagen.startsWith("http")){
             mImagen.setValue(imagen);
         }else{
-            mImagen.setValue("http://192.168.1.9:5203/img/inmueble/"+imagen);
+            mImagen.setValue(ApiCliente.getUrlImagenInmueble()+imagen);
         }
     }
 

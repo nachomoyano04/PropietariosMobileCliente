@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     nombre.setText(p.getNombreYApellido());
                     correo.setText(p.getCorreo());
                     Glide.with(MainActivity.this)
-                            .load("http://192.168.1.9:5203/img/avatar/"+p.getAvatar())
+                            .load(ApiCliente.getUrlImagenAvatar()+p.getAvatar())
                             .placeholder(R.drawable.ic_launcher_background)
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(avatar);

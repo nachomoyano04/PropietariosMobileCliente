@@ -22,7 +22,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Calle"
-            android:textAlignment="textStart"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -32,7 +33,7 @@
             android:layout_weight="1"
             android:hint="..."
             android:inputType="text"
-            android:textAlignment="textStart" />
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,7 +52,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Altura"
-            android:textAlignment="textStart"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -62,7 +64,7 @@
             android:ems="10"
             android:hint="..."
             android:inputType="text"
-            android:textAlignment="textStart" />
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -73,7 +75,6 @@
         android:background="@color/ic_launcher_background"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
@@ -82,7 +83,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Ciudad"
-            android:textAlignment="textStart"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -93,7 +95,7 @@
             android:ems="10"
             android:hint="..."
             android:inputType="text"
-            android:textAlignment="textStart" />
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -112,7 +114,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Tipo"
-            android:textAlignment="textStart"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -123,7 +126,7 @@
             android:ems="10"
             android:hint="..."
             android:inputType="text"
-            android:textAlignment="textStart" />
+            android:textAlignment="center" />
     </LinearLayout>
 
 
@@ -135,7 +138,6 @@
         android:background="@color/ic_launcher_background"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
@@ -144,7 +146,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Uso"
-            android:textAlignment="textStart"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -155,7 +158,7 @@
             android:ems="10"
             android:hint="..."
             android:inputType="text"
-            android:textAlignment="textStart" />
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -174,6 +177,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Metros2"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -184,7 +189,7 @@
             android:ems="10"
             android:hint="..."
             android:inputType="text"
-            android:textAlignment="textStart" />
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -195,7 +200,6 @@
         android:background="@color/ic_launcher_background"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
@@ -204,7 +208,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Descripción"
-            android:textAlignment="textStart"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -215,7 +220,7 @@
             android:ems="10"
             android:hint="..."
             android:inputType="text"
-            android:textAlignment="textStart" />
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -226,7 +231,6 @@
         android:background="@color/ic_launcher_background"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
@@ -235,7 +239,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Ambientes"
-            android:textAlignment="textStart"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -246,7 +251,7 @@
             android:ems="10"
             android:hint="..."
             android:inputType="text"
-            android:textAlignment="textStart" />
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -257,7 +262,6 @@
         android:background="@color/ic_launcher_background"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
@@ -266,7 +270,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Precio"
-            android:textAlignment="textStart"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -277,7 +282,7 @@
             android:ems="10"
             android:hint="..."
             android:inputType="text"
-            android:textAlignment="textStart" />
+            android:textAlignment="center" />
     </LinearLayout>
 
     <ImageView
